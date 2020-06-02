@@ -13,6 +13,8 @@
 		1C57FCF0248489E400969478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCEE248489E400969478 /* Main.storyboard */; };
 		1C57FCF2248489E600969478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF1248489E600969478 /* Assets.xcassets */; };
 		1C57FCF5248489E600969478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF3248489E600969478 /* LaunchScreen.storyboard */; };
+		1C57FCFD24848D1800969478 /* CompanyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFC24848D1800969478 /* CompanyProfile.swift */; };
+		1C57FCFF2484909D00969478 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFE2484909D00969478 /* Company.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1C57FCF1248489E600969478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C57FCF4248489E600969478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C57FCF6248489E600969478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C57FCFC24848D1800969478 /* CompanyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProfile.swift; sourceTree = "<group>"; };
+		1C57FCFE2484909D00969478 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,9 @@
 				1C57FCE8248489E400969478 /* AppDelegate.swift */,
 				1C57FCEA248489E400969478 /* SceneDelegate.swift */,
 				1C57FCEC248489E400969478 /* ViewController.swift */,
+				1C57FCFC24848D1800969478 /* CompanyProfile.swift */,
 				1C57FCEE248489E400969478 /* Main.storyboard */,
+				1C57FCFE2484909D00969478 /* Company.swift */,
 				1C57FCF1248489E600969478 /* Assets.xcassets */,
 				1C57FCF3248489E600969478 /* LaunchScreen.storyboard */,
 				1C57FCF6248489E600969478 /* Info.plist */,
@@ -141,6 +147,8 @@
 				1C57FCED248489E400969478 /* ViewController.swift in Sources */,
 				1C57FCE9248489E400969478 /* AppDelegate.swift in Sources */,
 				1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */,
+				1C57FCFF2484909D00969478 /* Company.swift in Sources */,
+				1C57FCFD24848D1800969478 /* CompanyProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
