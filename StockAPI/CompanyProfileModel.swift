@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct CompanyModel : Decodable {
+struct CompanyProfileModel : Decodable {
     
     let country: String
     let currency: String
     let exchange: String
+    let finnhubIndustry: String
+    let logo: String
     let ipo: String
+    let marketCapitalization: Double
+    let name: String
+    let phone: String
+    let shareOutstanding: Double
+    let ticker: String
     let weburl : String
     
 }

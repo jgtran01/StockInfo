@@ -14,27 +14,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var tickerTextField: UITextField!
     
     let apiKey = "bra4vjfrh5r8evkvd7lg"
+    var industry: String = ""
+    var logo: String = ""
+    var ipo: String = ""
+    var marketCap: Double = 0.0
+    var name: String = ""
+    var shareOutstanding: Double = 0.0
+    var ticker: String = ""
+    var weburl : String = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
-    
     @IBAction func searchButton(_ sender: Any)  {
         //performSegue(withIdentifier: "toCompanyProfile", sender: self)
 
-        fetchCompanyInformation { (res) in
-            print("fetchCompanyInformation function compelete")
+        fetchCompanyInformation { (res) in}
         
-
-        }
-        
+        performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
     }
-    
 
 
-    func fetchCompanyInformation(completion: @escaping (Result<CompanyModel, Error>) -> ()) {
+
+    func fetchCompanyInformation(completion: @escaping (Result<CompanyProfileModel, Error>) -> ()) {
         
         let ticker = tickerTextField.text!
         let urlString = "https://finnhub.io/api/v1/stock/profile2?symbol=\(ticker)&token=\(apiKey)"
@@ -48,29 +52,40 @@ class ViewController: UIViewController {
                 print("failed to connect to web server")
             }
             do {
-                let companyInfo = try JSONDecoder().decode(CompanyModel.self, from: data!)
+                let companyInfo = try JSONDecoder().decode(CompanyProfileModel.self, from: data!)
                 completion(.success(companyInfo))
-                let country = companyInfo.country
-                let currency = companyInfo.currency
-                let exchange = companyInfo.exchange
-                let ipo = companyInfo.ipo
-                print(country)
-                print(currency)
-                print(ipo)
-                print(exchange)
-//                ipo.forEach { (companyFetched) in
-//                    self.companyIPOArray.append(String(companyFetched))
-//                    print(self.companyIPOArray)
-//                    print("dfsadf")
-//                }
-                
+                self.name = companyInfo.name
+                self.industry = companyInfo.finnhubIndustry
+                self.logo = companyInfo.logo
+                self.ipo = companyInfo.ipo
+                self.marketCap = companyInfo.marketCapitalization
+                self.shareOutstanding = companyInfo.shareOutstanding
+                self.ticker = companyInfo.ticker
+                self.weburl = companyInfo.weburl
+                print(self.name)
+                print(self.industry)
+                print(self.marketCap)
+                print(self.shareOutstanding)
+                print(self.ipo)
             } catch let jsonError{
                completion(.failure(jsonError))
             print("failed to fetch JSON", jsonError)
             }
         }.resume()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCompanyDataVC" {
+            let destinationVC = segue.destination as! CompanyDataViewController
+            destinationVC.companyTicker = ticker
+            destinationVC.companyName = name
+            destinationVC.companyIndustry = industry
+            destinationVC.companyLogo = logo
+            destinationVC.companyIpo = ipo
+            destinationVC.companyShareOutstanding = shareOutstanding
+            destinationVC.companyWeburl = weburl
+        }
+    }
 
-
-
+        
 }
