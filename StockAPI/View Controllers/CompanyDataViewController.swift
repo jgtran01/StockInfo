@@ -10,12 +10,10 @@ import Foundation
 import UIKit
 
 class CompanyDataViewController : ViewController {
-    
-    @IBOutlet weak var companyNameLabel: UILabel!
+     
     
     @IBOutlet weak var companyTickerLabel: UILabel!
-    
-    @IBOutlet weak var stockPriceLabel: UILabel!
+    @IBOutlet weak var companyNameLabel: UILabel!
     
     var companyIndustry: String = ""
     var companyLogo: String = ""
@@ -25,10 +23,11 @@ class CompanyDataViewController : ViewController {
     var companyShareOutstanding: Double = 0.0
     var companyTicker: String = ""
     var companyWeburl : String = ""
+    var companyCurrentStockPrice : Double = 0.0
     
+    var informationArray: [String] = ["Market Cap", "Shares Outstanding", "IPO Date", "Website"]
     
     override func viewDidLoad() {
-        print("view2 did load")
         updateUI()
     }
     
@@ -37,3 +36,7 @@ class CompanyDataViewController : ViewController {
         companyTickerLabel.text = companyTicker
     }
 }
+
+
+    
+
