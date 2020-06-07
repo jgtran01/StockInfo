@@ -20,6 +20,7 @@ class CompanyDataViewController : ViewController {
     @IBOutlet weak var companyFinancialsLabel: UILabel!
     @IBOutlet weak var tbdLabel: UILabel!
     @IBOutlet weak var companyPeersLabel: UILabel!
+    @IBOutlet weak var percentChangeLabel: UILabel!
     
     @IBOutlet weak var logoImageView: UIImageView!
     
@@ -34,6 +35,7 @@ class CompanyDataViewController : ViewController {
     var companyCurrentStockPrice : Double = 0.0
     var companyMedianTargetPrice : Double = 0.0
     var companyLogoLink : String = ""
+    var percentChange : Double = 5.0
     
     override func viewDidLoad() {
 
@@ -48,10 +50,11 @@ class CompanyDataViewController : ViewController {
         companyStockPriceLabel.text = "$\(companyCurrentStockPrice)"
         companyTargetsLabel.text = "$\(companyMedianTargetPrice)"
         fetchLogo(imageLink: companyLogoLink)
+        percentChangeLabel.text = "\(percentChange)%"
         
         
         companyNameLabel.layer.borderWidth = 3.0
-       // companyTickerLabel.layer.borderWidth = 3.0
+        companyTickerLabel.layer.borderWidth = 3.0
         companyStockPriceLabel.layer.borderWidth = 3.0
         companyNewsLabel.layer.borderWidth = 3.0
         companyTargetsLabel.layer.borderWidth = 3.0
@@ -72,7 +75,7 @@ class CompanyDataViewController : ViewController {
             task.resume()
         }
     }
-    
+
     
 }
 

@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tickerTextField: UITextField!
     
     let apiKey = "brdg5pnrh5rf712pc860"
+    
+    //Company Basic Profile Variables
     var industry: String = ""
     var logo: String = ""
     var ipo: String = ""
@@ -22,9 +24,13 @@ class ViewController: UIViewController {
     var shareOutstanding: Double = 0.0
     var ticker: String = ""
     var weburl : String = ""
+    var logoLink : String = ""
+    
+    //Company Stock Variables
     var currentStockPrice : Double = 0.0
     var medianTargetPrice : Double = 0.0
-    var logoLink : String = ""
+    var previousClosePrice : Double = 0.0
+    var roundedPercentChange : Double = 0.0
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +105,9 @@ class ViewController: UIViewController {
                 let companyStockInfo = try JSONDecoder().decode(CompanyStockPrice.self, from: data!)
                 completion(.success(companyStockInfo))
                 self.currentStockPrice = companyStockInfo.c
+                let percentChangeFromPreviousCloseAsDecimal = ((self.currentStockPrice/companyStockInfo.pc)-1)
+                self.roundedPercentChange = self.reformatPercentChangeToPercentage(decimalValue: percentChangeFromPreviousCloseAsDecimal)
+                
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)
@@ -133,6 +142,13 @@ class ViewController: UIViewController {
         
     }
     
+    func reformatPercentChangeToPercentage(decimalValue : Double) -> Double{
+        
+        let percentChange = decimalValue * 100
+        let roundedPercentChange = Double(round(100 * percentChange) / 100)
+        print(roundedPercentChange)
+        return roundedPercentChange
+    }
     
     
     
@@ -150,6 +166,7 @@ class ViewController: UIViewController {
             destinationVC.companyCurrentStockPrice = currentStockPrice
             destinationVC.companyMedianTargetPrice = medianTargetPrice
             destinationVC.companyLogoLink = logoLink
+            destinationVC.percentChange = roundedPercentChange
         }
     }
 
