@@ -28,13 +28,21 @@ class CompanyDataViewController : ViewController {
     var informationArray: [String] = ["Market Cap", "Shares Outstanding", "IPO Date", "Website"]
     
     override func viewDidLoad() {
+        print("view2 did load")
+        companyNameLabel.text = companyName
+        companyTickerLabel.text = companyTicker
+        companyNameLabel.layer.borderWidth = 3.0
         updateUI()
+        
+
     }
     
     func updateUI(){
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
     }
+    
+    
 }
 
 

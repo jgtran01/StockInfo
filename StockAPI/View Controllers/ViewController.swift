@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterTickerHereLabel: UILabel!
     @IBOutlet weak var tickerTextField: UITextField!
     
-    let apiKey = "bra4vjfrh5r8evkvd7lg"
+    let apiKey = "brdg5pnrh5rf712pc860"
     var industry: String = ""
     var logo: String = ""
     var ipo: String = ""
@@ -26,15 +26,18 @@ class ViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
 
     }
 
     @IBAction func searchButton(_ sender: Any)  {
-        //performSegue(withIdentifier: "toCompanyProfile", sender: self)
 
-        fetchCompanyProfileInformation { (res) in}
+        fetchCompanyProfileInformation { (res) in
+            print(self.name)
+            print(self.ticker)
+        }
         fetchCompanyStockInformation { (res) in
-            print("Stock information retreived")
+            print(self.currentStockPrice)
         }
         performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
     }
@@ -43,7 +46,7 @@ class ViewController: UIViewController {
 
     func fetchCompanyProfileInformation(completion: @escaping (Result<CompanyProfileModel, Error>) -> ()) {
         
-        let ticker = tickerTextField.text!
+        let ticker = tickerTextField.text!.uppercased()
         
         // Fetches Company Profile Information
         let urlString = "https://finnhub.io/api/v1/stock/profile2?symbol=\(ticker)&token=\(apiKey)"
@@ -75,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     func fetchCompanyStockInformation(completion: @escaping (Result<CompanyStockPrice, Error>) -> ()) {
-        let ticker = tickerTextField.text!
+        let ticker = tickerTextField.text!.uppercased()
         
         //Fetches Company Stock Information
         let urlString = "https://finnhub.io/api/v1/quote?symbol=\(ticker)&token=\(apiKey)"
