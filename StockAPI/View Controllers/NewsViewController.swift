@@ -10,6 +10,8 @@ import UIKit
 
 class NewsViewController: UIViewController {
     
+    @IBOutlet weak var newsTableView: UITableView!
+    
     let apiKey = "brdg5pnrh5rf712pc860"
     
     override func viewDidLoad() {
@@ -33,9 +35,6 @@ class NewsViewController: UIViewController {
             }
             do {
                 let news = try JSONDecoder().decode(Array<GeneralNews>.self, from: data!)
-                print(news[0].headline)
-                print(news[1].headline)
-                print(news[2].headline)
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)

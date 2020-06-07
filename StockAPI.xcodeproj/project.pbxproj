@@ -18,6 +18,7 @@
 		1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */; };
 		1C7A0FD2248C329100723920 /* GeneralNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD1248C329100723920 /* GeneralNewsModel.swift */; };
 		1C7A0FD6248C34BB00723920 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD5248C34BB00723920 /* NewsViewController.swift */; };
+		1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyStockPriceModel.swift; sourceTree = "<group>"; };
 		1C7A0FD1248C329100723920 /* GeneralNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralNewsModel.swift; sourceTree = "<group>"; };
 		1C7A0FD5248C34BB00723920 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTargetModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */,
 				1C7A0FD1248C329100723920 /* GeneralNewsModel.swift */,
 				1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */,
+				1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			files = (
 				1C7A0FD2248C329100723920 /* GeneralNewsModel.swift in Sources */,
 				1C57FCED248489E400969478 /* ViewController.swift in Sources */,
+				1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */,
 				1C57FCE9248489E400969478 /* AppDelegate.swift in Sources */,
 				1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */,
 				1C57FCFF2484909D00969478 /* CompanyProfileModel.swift in Sources */,
