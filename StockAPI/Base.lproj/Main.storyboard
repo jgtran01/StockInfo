@@ -70,7 +70,7 @@
                     <connections>
                         <outlet property="enterTickerHereLabel" destination="5vJ-WG-SXd" id="VIT-Pa-nCo"/>
                         <outlet property="tickerTextField" destination="9rr-J6-Wmx" id="SES-G6-vus"/>
-                        <segue destination="NKL-ij-UkT" kind="presentation" identifier="goToCompanyDataVC" id="NPz-tz-cym"/>
+                        <segue destination="NKL-ij-UkT" kind="presentation" identifier="goToCompanyDataVC" id="WHB-pr-p5n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,24 +233,92 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Beh-U8-HiJ">
                                         <rect key="frame" x="0.0" y="631.5" width="414" height="210.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TBD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNX-sy-LW1">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vyH-mM-GLT">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-b9-JVZ">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TBD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNX-sy-LW1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9BI-sy-k32" userLabel="Related Stack View">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="210.5"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-b9-JVZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="lad-KN-qB3"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yFE-dG-Bbw">
+                                                        <rect key="frame" x="0.0" y="50" width="207" height="160.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvU-JJ-kAh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="80.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W2K-xl-q2i" userLabel="Related Company 1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="80.5"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-yr-4fU">
+                                                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="80.5"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="NJw-yr-4fU" firstAttribute="width" secondItem="W2K-xl-q2i" secondAttribute="width" id="9eu-kH-0OJ"/>
+                                                                    <constraint firstItem="NJw-yr-4fU" firstAttribute="height" secondItem="W2K-xl-q2i" secondAttribute="height" id="Pe2-W5-9YK"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13D-lH-8fl">
+                                                                <rect key="frame" x="0.0" y="80.5" width="207" height="80"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zFg-Aw-IPm">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="80"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iCj-Te-Baw">
+                                                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="80"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="iCj-Te-Baw" firstAttribute="height" secondItem="zFg-Aw-IPm" secondAttribute="height" id="IUG-7w-eT9"/>
+                                                                    <constraint firstItem="iCj-Te-Baw" firstAttribute="width" secondItem="zFg-Aw-IPm" secondAttribute="width" id="gT9-cR-hTg"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="height" secondItem="gvU-JJ-kAh" secondAttribute="height" id="PFC-ih-otn"/>
+                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="width" secondItem="gvU-JJ-kAh" secondAttribute="width" id="yUD-Nn-4p1"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="TWQ-b9-JVZ" firstAttribute="width" secondItem="eNX-sy-LW1" secondAttribute="width" id="2Ty-LP-kFf"/>
-                                            <constraint firstItem="TWQ-b9-JVZ" firstAttribute="height" secondItem="eNX-sy-LW1" secondAttribute="height" id="IvV-fm-NpZ"/>
+                                            <constraint firstItem="9BI-sy-k32" firstAttribute="height" secondItem="vyH-mM-GLT" secondAttribute="height" id="8l7-mB-P7i"/>
+                                            <constraint firstItem="9BI-sy-k32" firstAttribute="width" secondItem="vyH-mM-GLT" secondAttribute="width" id="SZX-yV-Lnn"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -275,6 +343,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YdB-e4-oel"/>
                     <connections>
+                        <outlet property="companyDataView" destination="1TJ-3J-5fX" id="dDY-Cg-CHG"/>
                         <outlet property="companyFinancialsLabel" destination="SND-bl-KJO" id="Sxp-iB-hmO"/>
                         <outlet property="companyNameLabel" destination="a5d-95-B4y" id="Kss-ex-mhD"/>
                         <outlet property="companyNewsLabel" destination="jO7-zv-D6b" id="IL1-ia-Hyc"/>
@@ -284,6 +353,10 @@
                         <outlet property="companyTickerLabel" destination="nSn-HO-Bxg" id="XDn-5i-R1o"/>
                         <outlet property="logoImageView" destination="8af-FU-Mc8" id="aTe-lh-xNb"/>
                         <outlet property="percentChangeLabel" destination="Nta-1k-zUE" id="866-xo-hs2"/>
+                        <outlet property="relatedCompany1Label" destination="W2K-xl-q2i" id="ssT-qA-1Fd"/>
+                        <outlet property="relatedCompany2Label" destination="NJw-yr-4fU" id="ZZA-QD-qmV"/>
+                        <outlet property="relatedCompany3Label" destination="zFg-Aw-IPm" id="fqO-B5-bjI"/>
+                        <outlet property="relatedCompany4Label" destination="iCj-Te-Baw" id="ULW-CT-ADQ"/>
                         <outlet property="tbdLabel" destination="eNX-sy-LW1" id="YL1-u2-iZJ"/>
                     </connections>
                 </viewController>

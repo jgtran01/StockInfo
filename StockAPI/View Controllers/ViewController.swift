@@ -31,6 +31,12 @@ class ViewController: UIViewController {
     var medianTargetPrice : Double = 0.0
     var previousClosePrice : Double = 0.0
     var roundedPercentChange : Double = 0.0
+    
+    //Empty Related Companies Array
+    var relatedCompany1 : String = ""
+    var relatedCompany2 : String = ""
+    var relatedCompany3 : String = ""
+    var relatedCompany4 : String = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +52,11 @@ class ViewController: UIViewController {
         }
         fetchCompanyTargetInformation { (res) in
         }
+        fetchRelatedCompanies { (res) in
+        }
         performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
-    }
+        }
+ 
 
 
 
@@ -150,6 +159,35 @@ class ViewController: UIViewController {
         return roundedPercentChange
     }
     
+    func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> ()) {
+        
+        let ticker = tickerTextField.text!.uppercased()
+        
+        //Fetches Company Stock Information
+        let urlString = "https://finnhub.io/api/v1/stock/peers?symbol=\(ticker)&token=\(apiKey)"
+        guard let url = URL(string: urlString) else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            if let err = err {
+                completion(.failure(err))
+                print("failed to connect to web server for API")
+            }
+            do {
+                let relatedCompanies = try JSONDecoder().decode([String].self, from: data!)
+                self.relatedCompany1 = relatedCompanies[0]
+                self.relatedCompany2 = relatedCompanies[1]
+                self.relatedCompany3 = relatedCompanies[2]
+                self.relatedCompany4 = relatedCompanies[3]
+                print(self.relatedCompany1, self.relatedCompany2, self.relatedCompany3, self.relatedCompany4)
+            } catch let jsonError {
+                completion(.failure(jsonError))
+                print("failed to fetch JSON", jsonError)
+            }
+            
+        }.resume()
+
+    }
+    
     
     
 //MARK: - Prepare For Segue
@@ -167,6 +205,10 @@ class ViewController: UIViewController {
             destinationVC.companyMedianTargetPrice = medianTargetPrice
             destinationVC.companyLogoLink = logoLink
             destinationVC.percentChange = roundedPercentChange
+            destinationVC.companyPeer1 = relatedCompany1
+            destinationVC.companyPeer2 = relatedCompany2
+            destinationVC.companyPeer3 = relatedCompany3
+            destinationVC.companyPeer4 = relatedCompany4
         }
     }
 
