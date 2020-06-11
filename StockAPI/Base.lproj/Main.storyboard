@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7c4-AS-zT0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -319,11 +319,42 @@
                         <outlet property="relatedCompany2Button" destination="kRK-j2-DWd" id="cuJ-U4-bEl"/>
                         <outlet property="relatedCompany3Button" destination="5Ln-QK-2Vn" id="AXH-dL-U3b"/>
                         <outlet property="relatedCompany4Button" destination="Lbr-bb-hIt" id="qr5-BW-Kdg"/>
+                        <segue destination="7c4-AS-zT0" kind="presentation" identifier="toCompanyNewsVC" id="IW6-LN-RIi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7j-hL-cgm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1879.7101449275365" y="132.58928571428572"/>
+        </scene>
+        <!--Company News View Controller-->
+        <scene sceneID="5yW-Jt-JY8">
+            <objects>
+                <viewController id="7c4-AS-zT0" customClass="CompanyNewsViewController" customModule="StockAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pus-sT-XYJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wnr-B3-3iI">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wnr-B3-3iI" firstAttribute="leading" secondItem="kzO-Jq-NMS" secondAttribute="leading" id="NK6-lH-0Fj"/>
+                            <constraint firstItem="kzO-Jq-NMS" firstAttribute="trailing" secondItem="wnr-B3-3iI" secondAttribute="trailing" id="gBs-MG-HjS"/>
+                            <constraint firstItem="kzO-Jq-NMS" firstAttribute="bottom" secondItem="wnr-B3-3iI" secondAttribute="bottom" id="ieV-Ar-b3Z"/>
+                            <constraint firstItem="wnr-B3-3iI" firstAttribute="top" secondItem="kzO-Jq-NMS" secondAttribute="top" id="r2Y-k2-y4B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kzO-Jq-NMS"/>
+                    </view>
+                    <connections>
+                        <outlet property="newsTableView" destination="wnr-B3-3iI" id="vKp-gt-OmQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1y-b7-t57" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2689" y="139"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="4ls-8j-nXx">

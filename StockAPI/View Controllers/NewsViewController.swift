@@ -24,7 +24,7 @@ class NewsViewController: UIViewController {
     }
     
 
-    func fetchNews(completion: @escaping (Result<GeneralNews, Error>) -> ()) {
+    func fetchNews(completion: @escaping (Result<News, Error>) -> ()) {
         let urlString = "https://finnhub.io/api/v1/news?category=general&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
@@ -34,7 +34,7 @@ class NewsViewController: UIViewController {
                 print("failed to connect to web server for news")
             }
             do {
-                let news = try JSONDecoder().decode(Array<GeneralNews>.self, from: data!)
+                let news = try JSONDecoder().decode(Array<News>.self, from: data!)
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)

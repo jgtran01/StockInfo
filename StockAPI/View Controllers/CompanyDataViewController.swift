@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CompanyDataViewController : UIViewController {
-     
+    
     //UI LABELS AND BUTTONS Outlets only
     @IBOutlet var companyDataView: UIView!
     
@@ -27,7 +27,7 @@ class CompanyDataViewController : UIViewController {
     @IBOutlet weak var relatedCompany2Button: UIButton!
     @IBOutlet weak var relatedCompany3Button: UIButton!
     @IBOutlet weak var relatedCompany4Button: UIButton!
-
+    
     
     //COLORS
     var darkBorderLine = CGColor.init(srgbRed: 100/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -103,15 +103,16 @@ class CompanyDataViewController : UIViewController {
     }
     
     func updateUIText() {
+        let stockPriceAsString = String(format: "%.2f", companyCurrentStockPrice)
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
         companyTargetsButton.setTitle("$\(companyMedianTargetPrice)", for: .normal)
         fetchLogo(imageLink: companyLogoLink)
         
         if percentChange > 0 {
-            companyPriceButton.setTitle("$\(companyCurrentStockPrice)\n\(percentChange)%", for: .normal)
+            companyPriceButton.setTitle("$\(stockPriceAsString)\n\(percentChange)%", for: .normal)
             companyPriceButton.setTitleColor(UIColor.green, for: .normal)
-    
+            
         } else {
             companyPriceButton.setTitle("$\(companyCurrentStockPrice)\n\(percentChange)%", for: .normal)
             companyPriceButton.setTitleColor(UIColor.red, for: .normal)
@@ -135,7 +136,7 @@ class CompanyDataViewController : UIViewController {
             task.resume()
         }
     }
-
+    
     
 }
 

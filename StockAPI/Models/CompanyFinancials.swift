@@ -8,8 +8,10 @@
 
 import Foundation
 
-class CompanyFinancials : Codable {
-    
-    let revenueAnnual : Double
-    let netIncomeCommmonAnnual : Double
-}
+
+struct CompanyFinancials: Decodable {
+    let metric : [String : Any]
+    init(from decoder: Decoder) throws {
+        metric = ["fuc":2, "fsf": "fsf"]
+    }
+    }
