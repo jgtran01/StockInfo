@@ -11,25 +11,23 @@ import UIKit
 
 class CompanyDataViewController : UIViewController {
      
-    //UI LABELS
-    @IBOutlet weak var companyTickerStackView: UIStackView!
+    //UI LABELS AND BUTTONS Outlets only
     @IBOutlet var companyDataView: UIView!
+    
     @IBOutlet weak var companyTickerLabel: UILabel!
     @IBOutlet weak var companyNameLabel: UILabel!
-    @IBOutlet weak var companyStockPriceLabel: UILabel!
-    @IBOutlet weak var companyNewsLabel: UILabel!
-    @IBOutlet weak var companyTargetsLabel: UILabel!
-    @IBOutlet weak var companyFinancialsLabel: UILabel!
-
+    @IBOutlet weak var companyPriceButton: UIButton!
+    @IBOutlet weak var companyNewsButton: UIButton!
+    @IBOutlet weak var companyTargetsButton: UIButton!
+    @IBOutlet weak var companyFinancialsButton: UIButton!
     @IBOutlet weak var companyPeersLabel: UILabel!
-    @IBOutlet weak var percentChangeLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var medianPriceTargetLabel: UILabel!
-    
-    @IBOutlet weak var relatedCompany1Label: UILabel!
-    @IBOutlet weak var relatedCompany2Label: UILabel!
-    @IBOutlet weak var relatedCompany3Label: UILabel!
-    @IBOutlet weak var relatedCompany4Label: UILabel!
+    @IBOutlet weak var relatedCompany1Button: UIButton!
+    @IBOutlet weak var relatedCompany2Button: UIButton!
+    @IBOutlet weak var relatedCompany3Button: UIButton!
+    @IBOutlet weak var relatedCompany4Button: UIButton!
+
     
     //COLORS
     var darkBorderLine = CGColor.init(srgbRed: 100/255, green: 50/255, blue: 50/255, alpha: 1)
@@ -77,51 +75,52 @@ class CompanyDataViewController : UIViewController {
         logoImageView.layer.backgroundColor = greenBorderLine
         logoImageView.layer.borderColor = greenBorderLine
         
-        companyStockPriceLabel.layer.borderWidth = 10.0
-        companyStockPriceLabel.layer.borderColor = greenBorderLine
+        companyPriceButton.layer.borderWidth = 10.0
+        companyPriceButton.layer.borderColor = greenBorderLine
         
-        companyNewsLabel.layer.borderWidth = 10.0
-        companyNewsLabel.layer.borderColor = greenBorderLine
+        companyNewsButton.layer.borderWidth = 10.0
+        companyNewsButton.layer.borderColor = greenBorderLine
         
         medianPriceTargetLabel.layer.borderWidth = 10.0
         medianPriceTargetLabel.layer.borderColor = greenBorderLine
-        companyTargetsLabel.layer.borderWidth = 10.0
-        companyTargetsLabel.layer.borderColor = greenBorderLine
+        companyTargetsButton.layer.borderWidth = 10.0
+        companyTargetsButton.layer.borderColor = greenBorderLine
         
-        companyFinancialsLabel.layer.borderWidth = 10.0
-        companyFinancialsLabel.layer.borderColor = greenBorderLine
-        
-
+        companyFinancialsButton.layer.borderWidth = 10.0
+        companyFinancialsButton.layer.borderColor = greenBorderLine
         
         companyPeersLabel.layer.borderWidth = 10.0
         companyPeersLabel.layer.borderColor = greenBorderLine
-        relatedCompany1Label.layer.borderWidth = 1.0
-        relatedCompany1Label.layer.borderColor = darkBorderLine
-        relatedCompany2Label.layer.borderWidth = 1.0
-        relatedCompany2Label.layer.borderColor = darkBorderLine
-        relatedCompany3Label.layer.borderWidth = 1.0
-        relatedCompany3Label.layer.borderColor = darkBorderLine
-        relatedCompany4Label.layer.borderWidth = 1.0
-        relatedCompany4Label.layer.borderColor = darkBorderLine
+        relatedCompany1Button.layer.borderWidth = 10.0
+        relatedCompany1Button.layer.borderColor = greenBorderLine
+        relatedCompany2Button.layer.borderWidth = 10.0
+        relatedCompany2Button.layer.borderColor = greenBorderLine
+        
+        relatedCompany3Button.layer.borderWidth = 10.0
+        relatedCompany3Button.layer.borderColor = greenBorderLine
+        relatedCompany4Button.layer.borderWidth = 10.0
+        relatedCompany4Button.layer.borderColor = greenBorderLine
     }
     
     func updateUIText() {
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
-        companyTargetsLabel.text = "$\(companyMedianTargetPrice)"
+        companyTargetsButton.setTitle("$\(companyMedianTargetPrice)", for: .normal)
         fetchLogo(imageLink: companyLogoLink)
         
         if percentChange > 0 {
-            companyStockPriceLabel.text = "$\(companyCurrentStockPrice)\n\(percentChange)%"
-            companyStockPriceLabel.textColor = UIColor.green
+            companyPriceButton.setTitle("$\(companyCurrentStockPrice)\n\(percentChange)%", for: .normal)
+            companyPriceButton.setTitleColor(UIColor.green, for: .normal)
+    
         } else {
-            companyStockPriceLabel.text = "$\(companyCurrentStockPrice)\n\(percentChange)%"
-            companyStockPriceLabel.textColor = UIColor.red
+            companyPriceButton.setTitle("$\(companyCurrentStockPrice)\n\(percentChange)%", for: .normal)
+            companyPriceButton.setTitleColor(UIColor.red, for: .normal)
         }
-        relatedCompany1Label.text = companyPeer1
-        relatedCompany2Label.text = companyPeer2
-        relatedCompany3Label.text = companyPeer3
-        relatedCompany4Label.text = companyPeer4
+        
+        relatedCompany1Button.setTitle(companyPeer1, for: .normal)
+        relatedCompany2Button.setTitle(companyPeer2, for: .normal)
+        relatedCompany3Button.setTitle(companyPeer3, for: .normal)
+        relatedCompany4Button.setTitle(companyPeer4, for: .normal)
     }
     
     func fetchLogo(imageLink : String) {

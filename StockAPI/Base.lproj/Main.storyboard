@@ -124,16 +124,11 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3RH-kC-rkh" userLabel="Current Price and Percent Stack View">
                                                         <rect key="frame" x="0.0" y="50" width="207" height="160.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idV-tg-f21">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-Sa-Epn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="160.5"/>
                                                                 <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="TG7-lj-8Xb"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.2064314783" green="1" blue="0.46974903350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                                <state key="normal" title="Price"/>
+                                                            </button>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -141,13 +136,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mch-Vb-ohX" userLabel="News Stack View">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="210.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jO7-zv-D6b">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XZ-vm-Yrc" userLabel="Company News Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="News">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -172,26 +167,26 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Targets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2U7-ES-Ke3">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5H-rG-g11">
                                                         <rect key="frame" x="0.0" y="50" width="207" height="160.5"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.2064314783" green="1" blue="0.46974903350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eUE-Xx-iTs" userLabel="Financials Stack View">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="210.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Financials" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-bl-KJO">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lox-AF-B3i" userLabel="Company Financials Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="Financials">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -203,19 +198,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Beh-U8-HiJ">
                                         <rect key="frame" x="0.0" y="631.5" width="414" height="210.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vyH-mM-GLT">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9BI-sy-k32" userLabel="Related Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8af-FU-Mc8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
-                                                        <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </imageView>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9BI-sy-k32" userLabel="Related Stack View">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="210.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-b9-JVZ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Companies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-b9-JVZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -231,55 +217,64 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvU-JJ-kAh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="80.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W2K-xl-q2i" userLabel="Related Company 1">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-yM-tqz" userLabel="Related Company 1 Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="80.5"/>
                                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-yr-4fU">
+                                                                        <state key="normal" title="Button">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRK-j2-DWd" userLabel="Related Company 2 Button">
                                                                         <rect key="frame" x="103.5" y="0.0" width="103.5" height="80.5"/>
                                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                        <state key="normal" title="Button">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                    </button>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="NJw-yr-4fU" firstAttribute="width" secondItem="W2K-xl-q2i" secondAttribute="width" id="9eu-kH-0OJ"/>
-                                                                    <constraint firstItem="NJw-yr-4fU" firstAttribute="height" secondItem="W2K-xl-q2i" secondAttribute="height" id="Pe2-W5-9YK"/>
+                                                                    <constraint firstItem="kRK-j2-DWd" firstAttribute="width" secondItem="u6d-yM-tqz" secondAttribute="width" id="niV-Wu-Nre"/>
+                                                                    <constraint firstItem="kRK-j2-DWd" firstAttribute="height" secondItem="u6d-yM-tqz" secondAttribute="height" id="wyh-Om-EI7"/>
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13D-lH-8fl">
                                                                 <rect key="frame" x="0.0" y="80.5" width="207" height="80"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zFg-Aw-IPm">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ln-QK-2Vn" userLabel="Related Company 3 Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="80"/>
                                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Company 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iCj-Te-Baw">
+                                                                        <state key="normal" title="Button">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbr-bb-hIt" userLabel="Related Company 4 Button">
                                                                         <rect key="frame" x="103.5" y="0.0" width="103.5" height="80"/>
                                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                        <state key="normal" title="Button">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                    </button>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="iCj-Te-Baw" firstAttribute="height" secondItem="zFg-Aw-IPm" secondAttribute="height" id="IUG-7w-eT9"/>
-                                                                    <constraint firstItem="iCj-Te-Baw" firstAttribute="width" secondItem="zFg-Aw-IPm" secondAttribute="width" id="gT9-cR-hTg"/>
+                                                                    <constraint firstItem="Lbr-bb-hIt" firstAttribute="width" secondItem="5Ln-QK-2Vn" secondAttribute="width" id="23n-lX-HOU"/>
+                                                                    <constraint firstItem="Lbr-bb-hIt" firstAttribute="height" secondItem="5Ln-QK-2Vn" secondAttribute="height" id="u2p-kw-mXu"/>
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="height" secondItem="gvU-JJ-kAh" secondAttribute="height" id="PFC-ih-otn"/>
-                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="width" secondItem="gvU-JJ-kAh" secondAttribute="width" id="yUD-Nn-4p1"/>
+                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="width" secondItem="gvU-JJ-kAh" secondAttribute="width" id="KMU-m5-OZR"/>
+                                                            <constraint firstItem="13D-lH-8fl" firstAttribute="height" secondItem="gvU-JJ-kAh" secondAttribute="height" id="Yy1-6C-17Y"/>
                                                         </constraints>
                                                     </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vyH-mM-GLT">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="210.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8af-FU-Mc8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
+                                                        <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </imageView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -311,19 +306,19 @@
                     <navigationItem key="navigationItem" id="YdB-e4-oel"/>
                     <connections>
                         <outlet property="companyDataView" destination="1TJ-3J-5fX" id="dDY-Cg-CHG"/>
-                        <outlet property="companyFinancialsLabel" destination="SND-bl-KJO" id="Sxp-iB-hmO"/>
+                        <outlet property="companyFinancialsButton" destination="lox-AF-B3i" id="j4F-6u-Ahc"/>
                         <outlet property="companyNameLabel" destination="a5d-95-B4y" id="Kss-ex-mhD"/>
-                        <outlet property="companyNewsLabel" destination="jO7-zv-D6b" id="IL1-ia-Hyc"/>
+                        <outlet property="companyNewsButton" destination="2XZ-vm-Yrc" id="OLv-Xh-5Ki"/>
                         <outlet property="companyPeersLabel" destination="TWQ-b9-JVZ" id="ArP-V8-WWi"/>
-                        <outlet property="companyStockPriceLabel" destination="idV-tg-f21" id="CBK-qW-P8p"/>
-                        <outlet property="companyTargetsLabel" destination="2U7-ES-Ke3" id="zMF-gz-DiM"/>
+                        <outlet property="companyPriceButton" destination="WSi-Sa-Epn" id="nyi-C4-GCw"/>
+                        <outlet property="companyTargetsButton" destination="e5H-rG-g11" id="me5-Wj-bQm"/>
                         <outlet property="companyTickerLabel" destination="nSn-HO-Bxg" id="XDn-5i-R1o"/>
                         <outlet property="logoImageView" destination="8af-FU-Mc8" id="aTe-lh-xNb"/>
                         <outlet property="medianPriceTargetLabel" destination="OdQ-kv-Frg" id="nUk-bU-fQ6"/>
-                        <outlet property="relatedCompany1Label" destination="W2K-xl-q2i" id="ssT-qA-1Fd"/>
-                        <outlet property="relatedCompany2Label" destination="NJw-yr-4fU" id="ZZA-QD-qmV"/>
-                        <outlet property="relatedCompany3Label" destination="zFg-Aw-IPm" id="fqO-B5-bjI"/>
-                        <outlet property="relatedCompany4Label" destination="iCj-Te-Baw" id="ULW-CT-ADQ"/>
+                        <outlet property="relatedCompany1Button" destination="u6d-yM-tqz" id="eJQ-Yi-2J8"/>
+                        <outlet property="relatedCompany2Button" destination="kRK-j2-DWd" id="cuJ-U4-bEl"/>
+                        <outlet property="relatedCompany3Button" destination="5Ln-QK-2Vn" id="AXH-dL-U3b"/>
+                        <outlet property="relatedCompany4Button" destination="Lbr-bb-hIt" id="qr5-BW-Kdg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7j-hL-cgm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

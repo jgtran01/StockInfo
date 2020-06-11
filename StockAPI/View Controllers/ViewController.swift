@@ -45,19 +45,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func searchButton(_ sender: Any)  {
+        
+        fetchData()
 
+        performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
+        }
+ 
+    func fetchData() {
+        
         fetchCompanyProfileInformation { (res) in
         }
         fetchCompanyStockInformation { (res) in
         }
         fetchCompanyTargetInformation { (res) in
         }
-        fetchRelatedCompanies { (res) in
-        }
-        performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
-        }
- 
-
+//        fetchRelatedCompanies { (res) in
+//        }
+    }
 
 
     
@@ -116,6 +120,7 @@ class ViewController: UIViewController {
                 self.currentStockPrice = companyStockInfo.c
                 let percentChangeFromPreviousCloseAsDecimal = ((self.currentStockPrice/companyStockInfo.pc)-1)
                 self.roundedPercentChange = self.reformatPercentChangeToPercentage(decimalValue: percentChangeFromPreviousCloseAsDecimal)
+                self.fetchRelatedCompanies { (res) in}
                 
             } catch let jsonError {
                 completion(.failure(jsonError))
