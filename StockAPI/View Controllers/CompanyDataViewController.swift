@@ -58,7 +58,6 @@ class CompanyDataViewController : UIViewController {
     }
     
     func updateUI(){
-        
         updateUILayout()
         updateUIText()
     }

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterTickerHereLabel: UILabel!
     @IBOutlet weak var tickerTextField: UITextField!
     
-    let apiKey = "brdg5pnrh5rf712pc860"
+    let apiKey = "bri5k4frh5rep8a5hkcg"
     
     //Company Basic Profile Variables
     var industry: String = ""

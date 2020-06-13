@@ -12,6 +12,7 @@ import UIKit
 class CompanyNewsViewController: ViewController {
     
     var newsFeed : [News] = []
+    var headLinesArray : [String] = []
     
     @IBOutlet weak var newsTableView: UITableView!
     
@@ -27,8 +28,8 @@ class CompanyNewsViewController: ViewController {
     }
     
     func fetchCompanyNews(completion: @escaping (Result<News, Error>) -> ()) {
-    
-        let urlString = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2020-04-30&to=2020-05-01&token\(apiKey)"
+        
+        let urlString = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2020-04-30&to=2020-05-01&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -39,7 +40,12 @@ class CompanyNewsViewController: ViewController {
             do {
                 let parsedNewsFeed = try JSONDecoder().decode(Array<News>.self, from: data!)
                 self.newsFeed = parsedNewsFeed
-                print(self.newsFeed)
+                self.newsFeed.forEach { (article) in
+                    self.headLinesArray.append(article.headline)
+                }
+                DispatchQueue.main.async {
+                    self.newsTableView.reloadData()
+                }
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)
@@ -49,14 +55,19 @@ class CompanyNewsViewController: ViewController {
 
 }
 
-//extension CompanyNewsViewController : UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return
-//    }
+extension CompanyNewsViewController : UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsFeed.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "ReusableCell")
+        
+        cell.textLabel?.text = headLinesArray[indexPath.row]
+
+    
+        return cell
+    }
     
     
 }
