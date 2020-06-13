@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterTickerHereLabel: UILabel!
     @IBOutlet weak var tickerTextField: UITextField!
     
-    let apiKey = "bri5k4frh5rep8a5hkcg"
+    let apiKey = "briigsnrh5rf00gkdpm0"
     
     //Company Basic Profile Variables
     var industry: String = ""
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     var marketCap: Double = 0.0
     var name: String = ""
     var shareOutstanding: Double = 0.0
-    var ticker: String = ""
+    var ticker: String!
     var weburl : String = ""
     var logoLink : String = ""
     
@@ -42,15 +42,14 @@ class ViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        definesPresentationContext = true
+      
 
     }
 
     @IBAction func searchButton(_ sender: Any)  {
         
         fetchData()
-
-        performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
+    
         }
  
     func fetchData() {
@@ -122,7 +121,7 @@ class ViewController: UIViewController {
                 self.currentStockPrice = companyStockInfo.c
                 let percentChangeFromPreviousCloseAsDecimal = ((self.currentStockPrice/companyStockInfo.pc)-1)
                 self.roundedPercentChange = self.reformatPercentChangeToPercentage(decimalValue: percentChangeFromPreviousCloseAsDecimal)
-                self.fetchRelatedCompanies { (res) in}
+                self.fetchRelatedCompanies(completion: { (res) in}, ticker: ticker)
                 
             } catch let jsonError {
                 completion(.failure(jsonError))
@@ -162,14 +161,13 @@ class ViewController: UIViewController {
         
         let percentChange = decimalValue * 100
         let roundedPercentChange = Double(round(100 * percentChange) / 100)
-        print(roundedPercentChange)
         return roundedPercentChange
     }
     
-    func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> ()) {
+    func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> (), ticker : String) {
+            
         
-            let ticker = self.tickerTextField.text!.uppercased()
-        
+            
         
         //Fetches Company Stock Information
         let urlString = "https://finnhub.io/api/v1/stock/peers?symbol=\(ticker)&token=\(apiKey)"
@@ -186,6 +184,9 @@ class ViewController: UIViewController {
                 self.relatedCompany2 = relatedCompanies[1]
                 self.relatedCompany3 = relatedCompanies[2]
                 self.relatedCompany4 = relatedCompanies[3]
+                DispatchQueue.main.async {
+                             self.performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
+                 }
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)
@@ -209,7 +210,6 @@ class ViewController: UIViewController {
             }
             do {
                 let companyFinancials = try JSONDecoder().decode(CompanyFinancials.self, from: data!)
-                print(companyFinancials.metric.count)
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON for Company Financials", jsonError)

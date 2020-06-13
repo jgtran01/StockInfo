@@ -38,9 +38,9 @@ class CompanyDataViewController : UIViewController {
     var companyLogo: String = ""
     var companyIpo: String = ""
     var companyMarketCap: Double = 0.0
-    var companyName: String = "Test"
+    var companyName: String!
     var companyShareOutstanding: Double = 0.0
-    var companyTicker: String = ""
+    var companyTicker: String!
     var companyWeburl : String = ""
     var companyCurrentStockPrice : Double = 0.0
     var companyMedianTargetPrice : Double = 0.0
@@ -54,8 +54,14 @@ class CompanyDataViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(companyName, "VIEW dID LOAD WITH Ticker: \(companyTicker)")
         updateUI()
     }
+    
+    @IBAction func newsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toCompanyNewsVC", sender: self)
+    }
+    
     
     func updateUI(){
         updateUILayout()
@@ -105,6 +111,7 @@ class CompanyDataViewController : UIViewController {
         let stockPriceAsString = String(format: "%.2f", companyCurrentStockPrice)
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
+        print(companyTickerLabel.text, "THIS IS TICKER")
         companyTargetsButton.setTitle("$\(companyMedianTargetPrice)", for: .normal)
         fetchLogo(imageLink: companyLogoLink)
         
@@ -133,6 +140,14 @@ class CompanyDataViewController : UIViewController {
                 }
             })
             task.resume()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCompanyNewsVC" {
+            let destinationVC = segue.destination as! CompanyNewsViewController
+            destinationVC.companyTicker1 = companyTicker
+            print(companyTicker, "THIS IS TICKER FOR SEGUE")
         }
     }
     

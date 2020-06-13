@@ -13,23 +13,26 @@ class CompanyNewsViewController: ViewController {
     
     var newsFeed : [News] = []
     var headLinesArray : [String] = []
+    var companyTicker1 : String = ""
     
     @IBOutlet weak var newsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       //newsTableView.dataSource = self
-        fetchCompanyNews { (res) in
-            print("fetched news")
-            
-            
+        if companyTicker1 != ""{
+            fetchCompanyNews { (res) in
+            }
+        } else {
+            print("ticker is empty")
+            newsTableView.reloadData()
         }
     }
     
     func fetchCompanyNews(completion: @escaping (Result<News, Error>) -> ()) {
         
-        let urlString = "https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2020-04-30&to=2020-05-01&token=\(apiKey)"
+
+        let urlString = "https://finnhub.io/api/v1/company-news?symbol=\(companyTicker1)&from=2020-04-30&to=2020-05-01&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -39,6 +42,7 @@ class CompanyNewsViewController: ViewController {
             }
             do {
                 let parsedNewsFeed = try JSONDecoder().decode(Array<News>.self, from: data!)
+                print(urlString)
                 self.newsFeed = parsedNewsFeed
                 self.newsFeed.forEach { (article) in
                     self.headLinesArray.append(article.headline)
@@ -52,6 +56,8 @@ class CompanyNewsViewController: ViewController {
             }
         }.resume()
     }
+    
+
 
 }
 
