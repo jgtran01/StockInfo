@@ -94,7 +94,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-st-sla" userLabel="CompanyNameStackView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="210.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="companyNameLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-95-B4y">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="companyNameLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-95-B4y">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="210.5"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -111,7 +111,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="93M-wU-1jy" userLabel="Price Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="210.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tickerLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSn-HO-Bxg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tickerLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSn-HO-Bxg">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <color key="backgroundColor" red="0.094481490550000005" green="0.80673092599999996" blue="0.35541683439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -226,6 +226,9 @@
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="relatedTicker1ButtonPressed:" destination="NKL-ij-UkT" eventType="touchUpInside" id="mlg-9c-HFU"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRK-j2-DWd" userLabel="Related Company 2 Button">
                                                                         <rect key="frame" x="103.5" y="0.0" width="103.5" height="80.5"/>
@@ -372,36 +375,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1y-b7-t57" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2689" y="139"/>
-        </scene>
-        <!--News View Controller-->
-        <scene sceneID="4ls-8j-nXx">
-            <objects>
-                <viewController id="SVa-kC-bRJ" customClass="NewsViewController" customModule="StockAPI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ybC-uN-IVK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ObH-6N-iol">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="ObH-6N-iol" firstAttribute="trailing" secondItem="klk-Xf-xAk" secondAttribute="trailing" id="QNW-jI-7hw"/>
-                            <constraint firstItem="ObH-6N-iol" firstAttribute="leading" secondItem="klk-Xf-xAk" secondAttribute="leading" id="ZOv-9s-i11"/>
-                            <constraint firstItem="ObH-6N-iol" firstAttribute="top" secondItem="klk-Xf-xAk" secondAttribute="top" id="aVH-1i-iCz"/>
-                            <constraint firstItem="ObH-6N-iol" firstAttribute="bottom" secondItem="klk-Xf-xAk" secondAttribute="bottom" id="hLB-PZ-JLR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="klk-Xf-xAk"/>
-                    </view>
-                    <connections>
-                        <outlet property="newsTableView" destination="ObH-6N-iol" id="RCg-aN-e6C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Beb-4x-pia" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1353.6231884057972" y="873.88392857142856"/>
         </scene>
     </scenes>
 </document>

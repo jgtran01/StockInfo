@@ -54,7 +54,6 @@ class CompanyDataViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(companyName, "VIEW dID LOAD WITH Ticker: \(companyTicker)")
         updateUI()
     }
     
@@ -62,7 +61,11 @@ class CompanyDataViewController : UIViewController {
         performSegue(withIdentifier: "toCompanyNewsVC", sender: self)
     }
     
+    @IBAction func relatedTicker1ButtonPressed(_ sender: Any) {
+        
+    }
     
+    //MARK: - UPDATES UI LAYOUT AND TEXT
     func updateUI(){
         updateUILayout()
         updateUIText()
@@ -111,16 +114,15 @@ class CompanyDataViewController : UIViewController {
         let stockPriceAsString = String(format: "%.2f", companyCurrentStockPrice)
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
-        print(companyTickerLabel.text, "THIS IS TICKER")
-        companyTargetsButton.setTitle("$\(companyMedianTargetPrice)", for: .normal)
+        companyTargetsButton.setTitle("$\(String(format: "%.2f", companyMedianTargetPrice))", for: .normal)
         fetchLogo(imageLink: companyLogoLink)
         
         if percentChange > 0 {
-            companyPriceButton.setTitle("$\(stockPriceAsString)\n\(percentChange)%", for: .normal)
+            companyPriceButton.setTitle("$\(stockPriceAsString)\n+\(percentChange)%", for: .normal)
             companyPriceButton.setTitleColor(UIColor.green, for: .normal)
             
         } else {
-            companyPriceButton.setTitle("$\(companyCurrentStockPrice)\n\(percentChange)%", for: .normal)
+            companyPriceButton.setTitle("$\(stockPriceAsString)\n\(percentChange)%", for: .normal)
             companyPriceButton.setTitleColor(UIColor.red, for: .normal)
         }
         
@@ -143,11 +145,12 @@ class CompanyDataViewController : UIViewController {
         }
     }
     
+    
+    //MARK: - PREPARE FOR SEGUES
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCompanyNewsVC" {
             let destinationVC = segue.destination as! CompanyNewsViewController
             destinationVC.companyTicker1 = companyTicker
-            print(companyTicker, "THIS IS TICKER FOR SEGUE")
         }
     }
     

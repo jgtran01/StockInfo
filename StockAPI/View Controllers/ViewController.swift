@@ -43,25 +43,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-
     }
 
     @IBAction func searchButton(_ sender: Any)  {
         
-        fetchData()
-    
+        fetchData(ticker: tickerTextField.text!)
         }
  
-    func fetchData() {
+    func fetchData(ticker: String) {
         
-        fetchCompanyProfileInformation { (res) in
-        }
-        fetchCompanyStockInformation { (res) in
-        }
-        fetchCompanyTargetInformation { (res) in
-        }
-        fetchCompanyFinancials { (res) in
-        }
+        fetchCompanyProfileInformation(completion: { (res) in
+        }, tickerToUse: ticker)
+        fetchCompanyStockInformation(completion: { (res) in
+        }, tickerToUse: ticker)
+        fetchCompanyTargetInformation(completion: { (res) in
+        }, tickerToUse: ticker)
+//        fetchCompanyFinancials { (res) in
+//        }
     }
 
 
@@ -69,12 +67,12 @@ class ViewController: UIViewController {
     
     
 //MARK: - Fetch JSON Functions
-    func fetchCompanyProfileInformation(completion: @escaping (Result<CompanyProfileModel, Error>) -> ()) {
+    func fetchCompanyProfileInformation(completion: @escaping (Result<CompanyProfileModel, Error>) -> (), tickerToUse: String) {
         
-        let ticker = tickerTextField.text!.uppercased()
+//        let ticker = tickerTextField.text!.uppercased()
         
         // Fetches Company Profile Information
-        let urlString = "https://finnhub.io/api/v1/stock/profile2?symbol=\(ticker)&token=\(apiKey)"
+        let urlString = "https://finnhub.io/api/v1/stock/profile2?symbol=\(tickerToUse)&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         
@@ -103,11 +101,11 @@ class ViewController: UIViewController {
         }.resume()
     }
     
-    func fetchCompanyStockInformation(completion: @escaping (Result<CompanyStockPrice, Error>) -> ()) {
-        let ticker = tickerTextField.text!.uppercased()
+    func fetchCompanyStockInformation(completion: @escaping (Result<CompanyStockPrice, Error>) -> (), tickerToUse : String) {
+//        let ticker = tickerTextField.text!.uppercased()
         
         //Fetches Company Stock Information
-        let urlString = "https://finnhub.io/api/v1/quote?symbol=\(ticker)&token=\(apiKey)"
+        let urlString = "https://finnhub.io/api/v1/quote?symbol=\(tickerToUse)&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -121,7 +119,8 @@ class ViewController: UIViewController {
                 self.currentStockPrice = companyStockInfo.c
                 let percentChangeFromPreviousCloseAsDecimal = ((self.currentStockPrice/companyStockInfo.pc)-1)
                 self.roundedPercentChange = self.reformatPercentChangeToPercentage(decimalValue: percentChangeFromPreviousCloseAsDecimal)
-                self.fetchRelatedCompanies(completion: { (res) in}, ticker: ticker)
+                self.fetchRelatedCompanies(completion: { (res) in
+                }, tickerToUse: tickerToUse)
                 
             } catch let jsonError {
                 completion(.failure(jsonError))
@@ -132,12 +131,12 @@ class ViewController: UIViewController {
         
     }
 
-    func fetchCompanyTargetInformation(completion: @escaping (Result<CompanyTarget, Error>) -> ()) {
+    func fetchCompanyTargetInformation(completion: @escaping (Result<CompanyTarget, Error>) -> (), tickerToUse : String) {
         
-        let ticker = tickerTextField.text!.uppercased()
+//        let ticker = tickerTextField.text!.uppercased()
         
         //Fetches Company Stock Information
-        let urlString = "https://finnhub.io/api/v1/stock/price-target?symbol=\(ticker)&token=\(apiKey)"
+        let urlString = "https://finnhub.io/api/v1/stock/price-target?symbol=\(tickerToUse)&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -164,13 +163,11 @@ class ViewController: UIViewController {
         return roundedPercentChange
     }
     
-    func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> (), ticker : String) {
-            
-        
+    func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> (), tickerToUse : String) {
             
         
         //Fetches Company Stock Information
-        let urlString = "https://finnhub.io/api/v1/stock/peers?symbol=\(ticker)&token=\(apiKey)"
+        let urlString = "https://finnhub.io/api/v1/stock/peers?symbol=\(tickerToUse)&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -195,29 +192,29 @@ class ViewController: UIViewController {
         }.resume()
     }
     
-    func fetchCompanyFinancials(completion: @escaping (Result<CompanyFinancials, Error>) -> ()) {
-        
-        let ticker = tickerTextField.text!.uppercased()
-        
-        //Fetches Company Stock Information
-        let urlString = "https://finnhub.io/api/v1/stock/metric?symbol=\(ticker)&metric=all&token=\(apiKey)"
-        guard let url = URL(string: urlString) else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
-            if let err = err {
-                completion(.failure(err))
-                print("failed to connect to web server for API")
-            }
-            do {
-                let companyFinancials = try JSONDecoder().decode(CompanyFinancials.self, from: data!)
-            } catch let jsonError {
-                completion(.failure(jsonError))
-                print("failed to fetch JSON for Company Financials", jsonError)
-            }
-            
-        }.resume()
-    }
-    
+//    func fetchCompanyFinancials(completion: @escaping (Result<CompanyFinancials, Error>) -> ()) {
+//        
+//        let ticker = tickerTextField.text!.uppercased()
+//        
+//        //Fetches Company Stock Information
+//        let urlString = "https://finnhub.io/api/v1/stock/metric?symbol=\(ticker)&metric=all&token=\(apiKey)"
+//        guard let url = URL(string: urlString) else {return}
+//        
+//        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+//            if let err = err {
+//                completion(.failure(err))
+//                print("failed to connect to web server for API")
+//            }
+//            do {
+//                let companyFinancials = try JSONDecoder().decode(CompanyFinancials.self, from: data!)
+//            } catch let jsonError {
+//                completion(.failure(jsonError))
+//                print("failed to fetch JSON for Company Financials", jsonError)
+//            }
+//            
+//        }.resume()
+//    }
+//    
     
     
 //MARK: - Prepare For Segue
