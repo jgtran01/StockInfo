@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C57FCE9248489E400969478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCE8248489E400969478 /* AppDelegate.swift */; };
 		1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCEA248489E400969478 /* SceneDelegate.swift */; };
-		1C57FCED248489E400969478 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCEC248489E400969478 /* ViewController.swift */; };
+		1C57FCED248489E400969478 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCEC248489E400969478 /* SearchViewController.swift */; };
 		1C57FCF0248489E400969478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCEE248489E400969478 /* Main.storyboard */; };
 		1C57FCF2248489E600969478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF1248489E600969478 /* Assets.xcassets */; };
 		1C57FCF5248489E600969478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF3248489E600969478 /* LaunchScreen.storyboard */; };
@@ -21,13 +21,14 @@
 		1CAC1FF1248FC1E20008474D /* RelatedCompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */; };
 		1CAC1FF32492546B0008474D /* CompanyFinancials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF22492546B0008474D /* CompanyFinancials.swift */; };
 		1CAC1FF52492DB400008474D /* CompanyNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */; };
+		1CAC1FFD2496A0370008474D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C57FCE5248489E400969478 /* StockAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C57FCE8248489E400969478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C57FCEA248489E400969478 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1C57FCEC248489E400969478 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C57FCEC248489E400969478 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1C57FCEF248489E400969478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C57FCF1248489E600969478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C57FCF4248489E600969478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedCompaniesModel.swift; sourceTree = "<group>"; };
 		1CAC1FF22492546B0008474D /* CompanyFinancials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyFinancials.swift; sourceTree = "<group>"; };
 		1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyNewsViewController.swift; sourceTree = "<group>"; };
+		1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */,
 				1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */,
 				1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */,
+				1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,7 +103,7 @@
 		1C57FD0D2489836000969478 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1C57FCEC248489E400969478 /* ViewController.swift */,
+				1C57FCEC248489E400969478 /* SearchViewController.swift */,
 				1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */,
 				1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */,
 			);
@@ -180,7 +183,8 @@
 			files = (
 				1C7A0FD2248C329100723920 /* NewsModel.swift in Sources */,
 				1CAC1FF52492DB400008474D /* CompanyNewsViewController.swift in Sources */,
-				1C57FCED248489E400969478 /* ViewController.swift in Sources */,
+				1CAC1FFD2496A0370008474D /* NewsTableViewCell.swift in Sources */,
+				1C57FCED248489E400969478 /* SearchViewController.swift in Sources */,
 				1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */,
 				1C57FCE9248489E400969478 /* AppDelegate.swift in Sources */,
 				1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */,

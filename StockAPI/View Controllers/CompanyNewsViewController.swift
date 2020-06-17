@@ -9,30 +9,36 @@
 import Foundation
 import UIKit
 
-class CompanyNewsViewController: ViewController {
+class CompanyNewsViewController: SearchViewController {
     
     var newsFeed : [News] = []
     var headLinesArray : [String] = []
+    var imageLinkArray: [String] = []
+    var imagesArray : [Data] = []
+    var dateArray : [Int] = []
     var companyTicker1 : String = ""
+    var companyLogo : UIImage!
+    
+    //date initializers
+    let calendar = Calendar.current
+    let dateRightNow = Date()
+    let dateOneWeekAgo = Date() - 604800
+
     
     @IBOutlet weak var newsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if companyTicker1 != ""{
-            fetchCompanyNews { (res) in
-            }
-        } else {
-            print("ticker is empty")
-            newsTableView.reloadData()
-        }
-    }
-    
-    func fetchCompanyNews(completion: @escaping (Result<News, Error>) -> ()) {
+        formatDate()
         
 
-        let urlString = "https://finnhub.io/api/v1/company-news?symbol=\(companyTicker1)&from=2020-04-30&to=2020-05-01&token=\(apiKey)"
+    }
+    
+    func fetchCompanyNews(completion: @escaping (Result<News, Error>) -> (), currentMonth: String, currentDay: String, currentYear: Int, pastMonth: String, pastDay: String, pastYear: Int) {
+        
+        
+        let urlString = "https://finnhub.io/api/v1/company-news?symbol=\(companyTicker1)&from=\(pastYear)-\(pastMonth)-\(pastDay)&to=\(currentYear)-\(currentMonth)-\( currentDay)&token=\(apiKey)"
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -46,7 +52,10 @@ class CompanyNewsViewController: ViewController {
                 self.newsFeed = parsedNewsFeed
                 self.newsFeed.forEach { (article) in
                     self.headLinesArray.append(article.headline)
+                    self.dateArray.append(article.datetime)
+                    self.imageLinkArray.append(article.image)
                 }
+
                 DispatchQueue.main.async {
                     self.newsTableView.reloadData()
                 }
@@ -57,6 +66,32 @@ class CompanyNewsViewController: ViewController {
         }.resume()
     }
     
+    func formatDate() {
+        let date = Date()
+        let calendar = Calendar.current
+        let currentMonth = calendar.component(.month, from: date)
+        let currentDay = calendar.component(.day, from: date)
+        let currentYear = calendar.component(.year, from: date)
+        let reformattedMonth = String(format: "%02d", currentMonth)
+        let reformmatedDay = String(format: "%02d", currentDay)
+        
+        let pastDate = Date() - 2592000
+        let pastMonth = calendar.component(.month, from: pastDate)
+        let pastDay = calendar.component(.day, from: pastDate)
+        let pastYear = calendar.component(.year, from: pastDate)
+        let reformattedPastMonth = String(format: "%02d", pastMonth)
+        let reformmatedPastDay = String(format: "%02d", pastDay)
+        print(reformattedMonth)
+        print(reformmatedDay)
+        print(reformattedPastMonth)
+        print(reformmatedPastDay)
+        fetchCompanyNews(completion: { (res) in
+        }, currentMonth: reformattedMonth, currentDay: reformmatedDay, currentYear: currentYear, pastMonth: reformattedPastMonth, pastDay: reformmatedPastDay, pastYear: pastYear)
+       
+    }
+    
+    
+    
 
 
 }
@@ -64,14 +99,13 @@ class CompanyNewsViewController: ViewController {
 extension CompanyNewsViewController : UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsFeed.count
+        return headLinesArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "ReusableCell")
+        let cell = newsTableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! NewsTableViewCell
         
-        cell.textLabel?.text = headLinesArray[indexPath.row]
-
-    
+        cell.headLineLabel.text = headLinesArray[indexPath.row]
+        cell.articleImageView.image = companyLogo
         return cell
     }
     

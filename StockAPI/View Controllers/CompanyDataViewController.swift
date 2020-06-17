@@ -61,9 +61,26 @@ class CompanyDataViewController : UIViewController {
         performSegue(withIdentifier: "toCompanyNewsVC", sender: self)
     }
     
-    @IBAction func relatedTicker1ButtonPressed(_ sender: Any) {
-        
+    @IBAction func relatedCompany1ButtonPressed(_ sender: Any) {
+        companyTicker = relatedCompany1Button.currentTitle
+        performSegue(withIdentifier: "toSearchVC", sender: self)
     }
+    
+    @IBAction func relatedCompany2ButtonPressed(_ sender: Any) {
+        companyTicker = relatedCompany2Button.currentTitle
+         performSegue(withIdentifier: "toSearchVC", sender: self)
+    }
+    
+    @IBAction func relatedCompany3ButtonPressed(_ sender: Any) {
+        companyTicker = relatedCompany3Button.currentTitle
+         performSegue(withIdentifier: "toSearchVC", sender: self)
+    }
+    
+    @IBAction func relatedCompany4ButtonPressed(_ sender: Any) {
+        companyTicker = relatedCompany4Button.currentTitle
+         performSegue(withIdentifier: "toSearchVC", sender: self)
+    }
+    
     
     //MARK: - UPDATES UI LAYOUT AND TEXT
     func updateUI(){
@@ -151,6 +168,12 @@ class CompanyDataViewController : UIViewController {
         if segue.identifier == "toCompanyNewsVC" {
             let destinationVC = segue.destination as! CompanyNewsViewController
             destinationVC.companyTicker1 = companyTicker
+            destinationVC.companyLogo = logoImageView.image
+        }
+        
+        if segue.identifier == "toSearchVC"{
+            let destinationVC = segue.destination as! SearchViewController
+            destinationVC.fetchData(ticker: companyTicker)
         }
     }
     

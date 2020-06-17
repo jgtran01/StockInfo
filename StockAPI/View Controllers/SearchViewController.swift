@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     @IBOutlet weak var enterTickerHereLabel: UILabel!
     @IBOutlet weak var tickerTextField: UITextField!
     
-    let apiKey = "briigsnrh5rf00gkdpm0"
+    let apiKey = "brjcn8frh5r9g3ot19vg"
     
     //Company Basic Profile Variables
     var industry: String = ""
@@ -47,7 +47,11 @@ class ViewController: UIViewController {
 
     @IBAction func searchButton(_ sender: Any)  {
         
-        fetchData(ticker: tickerTextField.text!)
+        if tickerTextField.text == "" {
+            print("empty ticker text field")
+        } else {
+            fetchData(ticker: tickerTextField.text!.uppercased())
+        }
         }
  
     func fetchData(ticker: String) {
@@ -133,7 +137,6 @@ class ViewController: UIViewController {
 
     func fetchCompanyTargetInformation(completion: @escaping (Result<CompanyTarget, Error>) -> (), tickerToUse : String) {
         
-//        let ticker = tickerTextField.text!.uppercased()
         
         //Fetches Company Stock Information
         let urlString = "https://finnhub.io/api/v1/stock/price-target?symbol=\(tickerToUse)&token=\(apiKey)"
@@ -236,6 +239,7 @@ class ViewController: UIViewController {
             destinationVC.companyPeer2 = relatedCompany2
             destinationVC.companyPeer3 = relatedCompany3
             destinationVC.companyPeer4 = relatedCompany4
+            print(roundedPercentChange)
         }
     }
 
