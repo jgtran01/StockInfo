@@ -16,6 +16,8 @@
 		1C57FCFD24848D1800969478 /* CompanyDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */; };
 		1C57FCFF2484909D00969478 /* CompanyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */; };
 		1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */; };
+		1C6C665B249AC628009AAFD8 /* EstimatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */; };
+		1C6C665D249AC8BF009AAFD8 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */; };
 		1C7A0FD2248C329100723920 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD1248C329100723920 /* NewsModel.swift */; };
 		1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */; };
 		1CAC1FF1248FC1E20008474D /* RelatedCompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */; };
@@ -36,6 +38,8 @@
 		1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDataViewController.swift; sourceTree = "<group>"; };
 		1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProfileModel.swift; sourceTree = "<group>"; };
 		1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyStockPriceModel.swift; sourceTree = "<group>"; };
+		1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesViewController.swift; sourceTree = "<group>"; };
+		1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
 		1C7A0FD1248C329100723920 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTargetModel.swift; sourceTree = "<group>"; };
 		1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedCompaniesModel.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */,
+				1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */,
 				1CAC1FF22492546B0008474D /* CompanyFinancials.swift */,
 				1C7A0FD1248C329100723920 /* NewsModel.swift */,
 				1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */,
@@ -106,6 +111,7 @@
 				1C57FCEC248489E400969478 /* SearchViewController.swift */,
 				1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */,
 				1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */,
+				1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,10 +190,12 @@
 				1C7A0FD2248C329100723920 /* NewsModel.swift in Sources */,
 				1CAC1FF52492DB400008474D /* CompanyNewsViewController.swift in Sources */,
 				1CAC1FFD2496A0370008474D /* NewsTableViewCell.swift in Sources */,
+				1C6C665B249AC628009AAFD8 /* EstimatesViewController.swift in Sources */,
 				1C57FCED248489E400969478 /* SearchViewController.swift in Sources */,
 				1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */,
 				1C57FCE9248489E400969478 /* AppDelegate.swift in Sources */,
 				1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */,
+				1C6C665D249AC8BF009AAFD8 /* RecommendationsModel.swift in Sources */,
 				1C57FCFF2484909D00969478 /* CompanyProfileModel.swift in Sources */,
 				1CAC1FF32492546B0008474D /* CompanyFinancials.swift in Sources */,
 				1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */,

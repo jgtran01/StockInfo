@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var enterTickerHereLabel: UILabel!
     @IBOutlet weak var tickerTextField: UITextField!
     
-    let apiKey = "brjcn8frh5r9g3ot19vg"
+    let apiKey = "brl8n47rh5re1lvcp33g"
     
     //Company Basic Profile Variables
     var industry: String = ""
@@ -31,7 +31,8 @@ class SearchViewController: UIViewController {
     var medianTargetPrice : Double = 0.0
     var previousClosePrice : Double = 0.0
     var roundedPercentChange : Double = 0.0
-    
+
+
     //Related Companies Button
     var relatedCompany1 : String = ""
     var relatedCompany2 : String = ""
@@ -180,10 +181,25 @@ class SearchViewController: UIViewController {
             }
             do {
                 let relatedCompanies = try JSONDecoder().decode([String].self, from: data!)
+//                if relatedCompanies.count == 4 {
                 self.relatedCompany1 = relatedCompanies[0]
                 self.relatedCompany2 = relatedCompanies[1]
                 self.relatedCompany3 = relatedCompanies[2]
                 self.relatedCompany4 = relatedCompanies[3]
+               // }
+//                if relatedCompanies.count == 3{
+//                    self.relatedCompany1 = relatedCompanies[0]
+//                    self.relatedCompany2 = relatedCompanies[1]
+//                    self.relatedCompany3 = relatedCompanies[2]
+//                }
+//                if relatedCompanies.count == 2 {
+//                    self.relatedCompany1 = relatedCompanies[0]
+//                    self.relatedCompany2 = relatedCompanies[1]
+//                }
+//                if relatedCompanies.count == 1{
+//                    self.relatedCompany1 = relatedCompanies[0]
+//                }
+                
                 DispatchQueue.main.async {
                              self.performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
                  }
@@ -239,7 +255,6 @@ class SearchViewController: UIViewController {
             destinationVC.companyPeer2 = relatedCompany2
             destinationVC.companyPeer3 = relatedCompany3
             destinationVC.companyPeer4 = relatedCompany4
-            print(roundedPercentChange)
         }
     }
 

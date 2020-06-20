@@ -13,7 +13,6 @@ class CompanyDataViewController : UIViewController {
     
     //UI LABELS AND BUTTONS Outlets only
     @IBOutlet var companyDataView: UIView!
-    
     @IBOutlet weak var companyTickerLabel: UILabel!
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var companyPriceButton: UIButton!
@@ -27,6 +26,7 @@ class CompanyDataViewController : UIViewController {
     @IBOutlet weak var relatedCompany2Button: UIButton!
     @IBOutlet weak var relatedCompany3Button: UIButton!
     @IBOutlet weak var relatedCompany4Button: UIButton!
+    @IBOutlet weak var indicesButton: UIButton!
     
     
     //COLORS
@@ -56,6 +56,12 @@ class CompanyDataViewController : UIViewController {
         super.viewDidLoad()
         updateUI()
     }
+    
+    //BUTTONS
+    @IBAction func estimateButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toEstimatesVC", sender: self)
+    }
+    
     
     @IBAction func newsButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "toCompanyNewsVC", sender: self)
@@ -90,13 +96,13 @@ class CompanyDataViewController : UIViewController {
     
     func updateUILayout() {
         
-        companyNameLabel.layer.borderWidth = 10.0
+        companyNameLabel.layer.borderWidth = 1.0
         companyNameLabel.layer.borderColor = greenBorderLine
         
         companyTickerLabel.layer.borderWidth = 10.0
         companyTickerLabel.layer.borderColor = greenBorderLine
         
-        logoImageView.layer.borderWidth = 10.0
+        logoImageView.layer.borderWidth = 1.0
         logoImageView.layer.backgroundColor = greenBorderLine
         logoImageView.layer.borderColor = greenBorderLine
         
@@ -125,6 +131,9 @@ class CompanyDataViewController : UIViewController {
         relatedCompany3Button.layer.borderColor = greenBorderLine
         relatedCompany4Button.layer.borderWidth = 10.0
         relatedCompany4Button.layer.borderColor = greenBorderLine
+        
+        indicesButton.layer.borderWidth = 10.0
+        indicesButton.layer.borderColor = greenBorderLine
     }
     
     func updateUIText() {
@@ -174,6 +183,11 @@ class CompanyDataViewController : UIViewController {
         if segue.identifier == "toSearchVC"{
             let destinationVC = segue.destination as! SearchViewController
             destinationVC.fetchData(ticker: companyTicker)
+        }
+        
+        if segue.identifier == "toEstimatesVC"{
+            let destinationVC = segue.destination as! EstimatesViewController
+            destinationVC.ticker = companyTicker
         }
     }
     
