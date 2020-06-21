@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,12 +18,14 @@
 		1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */; };
 		1C6C665B249AC628009AAFD8 /* EstimatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */; };
 		1C6C665D249AC8BF009AAFD8 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */; };
+		1C6C6661249FAAC1009AAFD8 /* EstimatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C6660249FAAC1009AAFD8 /* EstimatesTableViewCell.swift */; };
 		1C7A0FD2248C329100723920 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD1248C329100723920 /* NewsModel.swift */; };
 		1C7A0FDA248C8AB600723920 /* CompanyTargetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */; };
 		1CAC1FF1248FC1E20008474D /* RelatedCompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */; };
 		1CAC1FF32492546B0008474D /* CompanyFinancials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF22492546B0008474D /* CompanyFinancials.swift */; };
 		1CAC1FF52492DB400008474D /* CompanyNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */; };
 		1CAC1FFD2496A0370008474D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */; };
+		48E52D65388C669E8585F510 /* Pods_StockAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF3691FAAF8466D8FDCF03 /* Pods_StockAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +42,16 @@
 		1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyStockPriceModel.swift; sourceTree = "<group>"; };
 		1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesViewController.swift; sourceTree = "<group>"; };
 		1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
+		1C6C6660249FAAC1009AAFD8 /* EstimatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesTableViewCell.swift; sourceTree = "<group>"; };
 		1C7A0FD1248C329100723920 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTargetModel.swift; sourceTree = "<group>"; };
 		1CAC1FF0248FC1E20008474D /* RelatedCompaniesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedCompaniesModel.swift; sourceTree = "<group>"; };
 		1CAC1FF22492546B0008474D /* CompanyFinancials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyFinancials.swift; sourceTree = "<group>"; };
 		1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyNewsViewController.swift; sourceTree = "<group>"; };
 		1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		77D327E104EDEAC94819E7BE /* Pods-StockAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAPI.release.xcconfig"; path = "Target Support Files/Pods-StockAPI/Pods-StockAPI.release.xcconfig"; sourceTree = "<group>"; };
+		E3AF3691FAAF8466D8FDCF03 /* Pods_StockAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54C62475EAFFAFCF40D1DCA /* Pods-StockAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAPI.debug.xcconfig"; path = "Target Support Files/Pods-StockAPI/Pods-StockAPI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +59,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E52D65388C669E8585F510 /* Pods_StockAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2029109C6078BEDE51CD25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F54C62475EAFFAFCF40D1DCA /* Pods-StockAPI.debug.xcconfig */,
+				77D327E104EDEAC94819E7BE /* Pods-StockAPI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		137CAE1A99A0B1366D7C0A7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3AF3691FAAF8466D8FDCF03 /* Pods_StockAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1C57FCDC248489E400969478 = {
 			isa = PBXGroup;
 			children = (
 				1C57FCE7248489E400969478 /* StockAPI */,
 				1C57FCE6248489E400969478 /* Products */,
+				0B2029109C6078BEDE51CD25 /* Pods */,
+				137CAE1A99A0B1366D7C0A7F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +127,7 @@
 				1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */,
 				1C7A0FD9248C8AB500723920 /* CompanyTargetModel.swift */,
 				1CAC1FFC2496A0370008474D /* NewsTableViewCell.swift */,
+				1C6C6660249FAAC1009AAFD8 /* EstimatesTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C57FCF9248489E600969478 /* Build configuration list for PBXNativeTarget "StockAPI" */;
 			buildPhases = (
+				08354FA301B9AD28310A1186 /* [CP] Check Pods Manifest.lock */,
 				1C57FCE1248489E400969478 /* Sources */,
 				1C57FCE2248489E400969478 /* Frameworks */,
 				1C57FCE3248489E400969478 /* Resources */,
+				B27CF37E532A28D9043C12AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +211,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08354FA301B9AD28310A1186 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StockAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B27CF37E532A28D9043C12AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockAPI/Pods-StockAPI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockAPI/Pods-StockAPI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockAPI/Pods-StockAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1C57FCE1248489E400969478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -200,6 +271,7 @@
 				1CAC1FF32492546B0008474D /* CompanyFinancials.swift in Sources */,
 				1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */,
 				1C57FCFD24848D1800969478 /* CompanyDataViewController.swift in Sources */,
+				1C6C6661249FAAC1009AAFD8 /* EstimatesTableViewCell.swift in Sources */,
 				1CAC1FF1248FC1E20008474D /* RelatedCompaniesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +414,7 @@
 		};
 		1C57FCFA248489E600969478 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F54C62475EAFFAFCF40D1DCA /* Pods-StockAPI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,6 +433,7 @@
 		};
 		1C57FCFB248489E600969478 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77D327E104EDEAC94819E7BE /* Pods-StockAPI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
