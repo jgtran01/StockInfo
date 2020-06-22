@@ -188,6 +188,7 @@ class CompanyDataViewController : UIViewController {
         if segue.identifier == "toEstimatesVC"{
             let destinationVC = segue.destination as! EstimatesViewController
             destinationVC.ticker = companyTicker
+            destinationVC.currentPrice = companyCurrentStockPrice
         }
     }
     
