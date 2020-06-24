@@ -12,19 +12,22 @@ import Charts
 class EstimatesViewController: SearchViewController {
     
     @IBOutlet weak var recommendationBarChart: BarChartView!
-    
-    
     @IBOutlet weak var estimatesTableView: UITableView!
-    
     @IBOutlet weak var lastupdatedLabel: UILabel!
     
     var targetPriceHigh: Double!
+    var highDifference: Double!
     var targetPriceLow: Double!
+    var lowDifference: Double!
     var targetMean: Double!
+    var averageDifference: Double!
     var targetLastUpdated: String!
     var targetMedian : Double!
+    var medianDifference : Double!
     var currentPrice: Double!
     
+    
+    //Chart Variables
     var strongBuy = BarChartDataEntry(x: 1, y: 0)
     var buy = BarChartDataEntry(x: 2, y: 0)
     var hold = BarChartDataEntry(x: 3, y: 0)
@@ -33,7 +36,7 @@ class EstimatesViewController: SearchViewController {
     
     var numberofRecommendations = [BarChartDataEntry]()
     var column1LabelsArray = ["Current Price", "Median Target Price", "Average Target Price", "High Target Price", "Low Taget Price"]
-    var estimatedNumbersArray : [Double] = [0,1,2,3,4]
+    var estimatedNumbersArray : [String] = ["","","","",""]
     
     //colors
     
@@ -41,8 +44,9 @@ class EstimatesViewController: SearchViewController {
     var darkGreen = UIColor.init(displayP3Red: 0/255, green: 150/255, blue: 10/255, alpha: 1.0)
     var darkRed = UIColor.init(displayP3Red: 200/255, green: 10/255, blue: 10/255, alpha: 1.0)
     
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+       // super.viewDidLoad()
 
         updateUI()
     }
@@ -102,11 +106,11 @@ class EstimatesViewController: SearchViewController {
                 self.targetPriceLow = companyTargetInfo.targetLow
                 self.targetMean = companyTargetInfo.targetMean
                 self.targetLastUpdated = companyTargetInfo.lastUpdated
-                self.estimatedNumbersArray.insert(self.currentPrice, at: 0)
-                self.estimatedNumbersArray.insert(self.targetMedian, at: 1)
-                self.estimatedNumbersArray.insert(self.targetMean, at: 2)
-                self.estimatedNumbersArray.insert(self.targetPriceHigh, at: 3)
-                self.estimatedNumbersArray.insert(self.targetPriceLow, at: 4)
+                self.estimatedNumbersArray.insert((String(format: "%.2f", self.currentPrice)), at: 0)
+                self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetMedian)), at: 1)
+                self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetMean)), at: 2)
+                self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetPriceHigh)), at: 3)
+                self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetPriceLow)), at: 4)
                 print(self.estimatedNumbersArray)
                 DispatchQueue.main.async {
                     self.estimatesTableView.reloadData()
@@ -118,6 +122,10 @@ class EstimatesViewController: SearchViewController {
             }
             
         }.resume()
+        
+    }
+    
+    func calcDifference() {
         
     }
     
@@ -149,7 +157,11 @@ extension EstimatesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = estimatesTableView.dequeueReusableCell(withIdentifier: "estimatesReusableCell") as! EstimatesTableViewCell
         
         cell.column1Label.text = column1LabelsArray[indexPath.row]
-        cell.column2Label.text = String(estimatedNumbersArray[indexPath.row])
+        cell.column2Label.text = "$\(String(estimatedNumbersArray[indexPath.row]))"
         return cell
     }
+}
+
+extension EstimatesViewController{
+    override func viewWillLayoutSubviews() {}
 }

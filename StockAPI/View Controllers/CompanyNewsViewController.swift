@@ -18,6 +18,7 @@ class CompanyNewsViewController: SearchViewController {
     var dateArray : [Int] = []
     var companyTicker1 : String = ""
     var companyLogo : UIImage!
+    var urlArray = [String]()
     
     //date initializers
     let calendar = Calendar.current
@@ -28,7 +29,7 @@ class CompanyNewsViewController: SearchViewController {
     @IBOutlet weak var newsTableView: UITableView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+//        super.viewDidLoad()
         
         formatDate()
         
@@ -54,6 +55,7 @@ class CompanyNewsViewController: SearchViewController {
                     self.headLinesArray.append(article.headline)
                     self.dateArray.append(article.datetime)
                     self.imageLinkArray.append(article.image)
+                    self.urlArray.append(article.url)
                 }
 
                 DispatchQueue.main.async {
@@ -103,11 +105,25 @@ extension CompanyNewsViewController : UITableViewDataSource, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! NewsTableViewCell
-        
-        cell.headLineLabel.text = headLinesArray[indexPath.row]
+        cell.textView.text = headLinesArray[indexPath.row]
         cell.articleImageView.image = companyLogo
+        
+        //save textView font and style
+        let font = cell.textView.font
+        let textColor = cell.textView.textColor
+        
+        //create hyperlink
+        let attributedString = NSAttributedString.makeHyperLink(for: urlArray[indexPath.row], in: cell.textView.text, as: cell.textView.text)
+        cell.textView.attributedText = attributedString
+        cell.textView.font = font
+        cell.textView.textColor = UIColor.white
         return cell
     }
     
     
+}
+
+extension CompanyNewsViewController{
+    override func viewWillLayoutSubviews() {}
+
 }

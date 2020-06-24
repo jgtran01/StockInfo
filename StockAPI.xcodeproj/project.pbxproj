@@ -11,11 +11,12 @@
 		1C57FCEB248489E400969478 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCEA248489E400969478 /* SceneDelegate.swift */; };
 		1C57FCED248489E400969478 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCEC248489E400969478 /* SearchViewController.swift */; };
 		1C57FCF0248489E400969478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCEE248489E400969478 /* Main.storyboard */; };
-		1C57FCF2248489E600969478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF1248489E600969478 /* Assets.xcassets */; };
 		1C57FCF5248489E600969478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C57FCF3248489E600969478 /* LaunchScreen.storyboard */; };
 		1C57FCFD24848D1800969478 /* CompanyDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */; };
 		1C57FCFF2484909D00969478 /* CompanyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */; };
 		1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */; };
+		1C5F0A5D24A2425100DEF8EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5F0A5C24A2425100DEF8EB /* Images.xcassets */; };
+		1C5F0A5F24A2EDEA00DEF8EB /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F0A5E24A2EDEA00DEF8EB /* NSAttributedStringExtension.swift */; };
 		1C6C665B249AC628009AAFD8 /* EstimatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */; };
 		1C6C665D249AC8BF009AAFD8 /* RecommendationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */; };
 		1C6C6661249FAAC1009AAFD8 /* EstimatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6C6660249FAAC1009AAFD8 /* EstimatesTableViewCell.swift */; };
@@ -34,12 +35,13 @@
 		1C57FCEA248489E400969478 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1C57FCEC248489E400969478 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1C57FCEF248489E400969478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1C57FCF1248489E600969478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C57FCF4248489E600969478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C57FCF6248489E600969478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDataViewController.swift; sourceTree = "<group>"; };
 		1C57FCFE2484909D00969478 /* CompanyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProfileModel.swift; sourceTree = "<group>"; };
 		1C57FD0A248982F800969478 /* CompanyStockPriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyStockPriceModel.swift; sourceTree = "<group>"; };
+		1C5F0A5C24A2425100DEF8EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1C5F0A5E24A2EDEA00DEF8EB /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesViewController.swift; sourceTree = "<group>"; };
 		1C6C665C249AC8BF009AAFD8 /* RecommendationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsModel.swift; sourceTree = "<group>"; };
 		1C6C6660249FAAC1009AAFD8 /* EstimatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				1C57FCE7248489E400969478 /* StockAPI */,
 				1C57FCE6248489E400969478 /* Products */,
+				1C5F0A5C24A2425100DEF8EB /* Images.xcassets */,
 				0B2029109C6078BEDE51CD25 /* Pods */,
 				137CAE1A99A0B1366D7C0A7F /* Frameworks */,
 			);
@@ -109,9 +112,9 @@
 				1C57FD0D2489836000969478 /* View Controllers */,
 				1C57FCEE248489E400969478 /* Main.storyboard */,
 				1C57FD09248982DB00969478 /* Models */,
-				1C57FCF1248489E600969478 /* Assets.xcassets */,
 				1C57FCF3248489E600969478 /* LaunchScreen.storyboard */,
 				1C57FCF6248489E600969478 /* Info.plist */,
+				1C5F0A5E24A2EDEA00DEF8EB /* NSAttributedStringExtension.swift */,
 			);
 			path = StockAPI;
 			sourceTree = "<group>";
@@ -136,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				1C57FCEC248489E400969478 /* SearchViewController.swift */,
-				1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */,
 				1CAC1FF42492DB400008474D /* CompanyNewsViewController.swift */,
+				1C57FCFC24848D1800969478 /* CompanyDataViewController.swift */,
 				1C6C665A249AC628009AAFD8 /* EstimatesViewController.swift */,
 			);
 			path = "View Controllers";
@@ -204,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C57FCF5248489E600969478 /* LaunchScreen.storyboard in Resources */,
-				1C57FCF2248489E600969478 /* Assets.xcassets in Resources */,
+				1C5F0A5D24A2425100DEF8EB /* Images.xcassets in Resources */,
 				1C57FCF0248489E400969478 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +272,7 @@
 				1C6C665D249AC8BF009AAFD8 /* RecommendationsModel.swift in Sources */,
 				1C57FCFF2484909D00969478 /* CompanyProfileModel.swift in Sources */,
 				1CAC1FF32492546B0008474D /* CompanyFinancials.swift in Sources */,
+				1C5F0A5F24A2EDEA00DEF8EB /* NSAttributedStringExtension.swift in Sources */,
 				1C57FD0B248982F800969478 /* CompanyStockPriceModel.swift in Sources */,
 				1C57FCFD24848D1800969478 /* CompanyDataViewController.swift in Sources */,
 				1C6C6661249FAAC1009AAFD8 /* EstimatesTableViewCell.swift in Sources */,

@@ -10,8 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var enterTickerHereLabel: UILabel!
+    @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var tickerTextField: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     let apiKey = "brl8n47rh5re1lvcp33g"
     
@@ -39,11 +41,18 @@ class SearchViewController: UIViewController {
     var relatedCompany3 : String = ""
     var relatedCompany4 : String = ""
     
-//    var weekHigh52 : String = ""
+    var darkGray = UIColor.init(displayP3Red: 99/255, green: 99/255, blue: 102/255, alpha: 1)
  
+    override func viewWillLayoutSubviews() {
+      super.viewWillLayoutSubviews()
+      searchButton.layer.cornerRadius = searchButton.frame.height / 2.0
+        searchButton.frame = CGRect(x: 160, y: 160, width: 160, height: 160)
+          searchButton.layer.borderWidth = 1.0
+          searchButton.clipsToBounds = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
     }
 
     @IBAction func searchButton(_ sender: Any)  {
@@ -181,23 +190,35 @@ class SearchViewController: UIViewController {
             }
             do {
                 let relatedCompanies = try JSONDecoder().decode([String].self, from: data!)
-//                if relatedCompanies.count == 4 {
+                print(relatedCompanies)
+//                if relatedCompanies.count < 4 {
                 self.relatedCompany1 = relatedCompanies[0]
                 self.relatedCompany2 = relatedCompanies[1]
                 self.relatedCompany3 = relatedCompanies[2]
                 self.relatedCompany4 = relatedCompanies[3]
-               // }
+//                }
 //                if relatedCompanies.count == 3{
 //                    self.relatedCompany1 = relatedCompanies[0]
 //                    self.relatedCompany2 = relatedCompanies[1]
 //                    self.relatedCompany3 = relatedCompanies[2]
+//                    self.relatedCompany4 = ""
 //                }
 //                if relatedCompanies.count == 2 {
 //                    self.relatedCompany1 = relatedCompanies[0]
 //                    self.relatedCompany2 = relatedCompanies[1]
+//                    self.relatedCompany3 = ""
+//                    self.relatedCompany4 = ""
 //                }
 //                if relatedCompanies.count == 1{
 //                    self.relatedCompany1 = relatedCompanies[0]
+//                    self.relatedCompany2 = ""
+//                    self.relatedCompany3 = ""
+//                    self.relatedCompany4 = ""
+//                } else  {
+//                    self.relatedCompany1 = ""
+//                    self.relatedCompany2 = ""
+//                    self.relatedCompany3 = ""
+//                    self.relatedCompany4 = ""
 //                }
                 
                 DispatchQueue.main.async {
