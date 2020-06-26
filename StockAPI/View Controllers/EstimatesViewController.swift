@@ -16,14 +16,10 @@ class EstimatesViewController: SearchViewController {
     @IBOutlet weak var lastupdatedLabel: UILabel!
     
     var targetPriceHigh: Double!
-    var highDifference: Double!
     var targetPriceLow: Double!
-    var lowDifference: Double!
     var targetMean: Double!
-    var averageDifference: Double!
     var targetLastUpdated: String!
     var targetMedian : Double!
-    var medianDifference : Double!
     var currentPrice: Double!
     
     
@@ -37,6 +33,8 @@ class EstimatesViewController: SearchViewController {
     var numberofRecommendations = [BarChartDataEntry]()
     var column1LabelsArray = ["Current Price", "Median Target Price", "Average Target Price", "High Target Price", "Low Taget Price"]
     var estimatedNumbersArray : [String] = ["","","","",""]
+    var differenceArray : [String] = ["","","","",""]
+    var directionArray: [String] = ["","","","",""]
     
     //colors
     
@@ -55,6 +53,8 @@ class EstimatesViewController: SearchViewController {
         fetchAnalystRecommendations(completion: { (res) in}, tickerToUse: ticker)
     }
 
+    
+    //CREATES THE CHART
     func fetchAnalystRecommendations(completion: @escaping (Result<RecommendationsModel, Error>) -> (), tickerToUse: String) {
         let urlString = "https://finnhub.io/api/v1/stock/recommendation?symbol=\(ticker!)&token=\(apiKey)"
         
@@ -79,7 +79,6 @@ class EstimatesViewController: SearchViewController {
                     self.updateChart()
                 }
                 self.fetchEstimates(completion: { (res) in}, tickerToUse: self.ticker)
-                print(recommendation)
             } catch let jsonError{
                completion(.failure(jsonError))
             print("failed to fetch JSON", jsonError)
@@ -106,12 +105,15 @@ class EstimatesViewController: SearchViewController {
                 self.targetPriceLow = companyTargetInfo.targetLow
                 self.targetMean = companyTargetInfo.targetMean
                 self.targetLastUpdated = companyTargetInfo.lastUpdated
+                //insert in array
                 self.estimatedNumbersArray.insert((String(format: "%.2f", self.currentPrice)), at: 0)
                 self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetMedian)), at: 1)
                 self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetMean)), at: 2)
                 self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetPriceHigh)), at: 3)
                 self.estimatedNumbersArray.insert((String(format: "%.2f", self.targetPriceLow)), at: 4)
-                print(self.estimatedNumbersArray)
+                
+                
+                self.calcDifference()
                 DispatchQueue.main.async {
                     self.estimatesTableView.reloadData()
                     self.lastupdatedLabel.text = "Last Updated: \(self.targetLastUpdated!)"
@@ -127,7 +129,81 @@ class EstimatesViewController: SearchViewController {
     
     func calcDifference() {
         
+        var currentDirection = "arrow.up"
+        var medianDirection = "arrow.up"
+        var averageDirection = "arrow.up"
+        var highDirection = "arrow.up"
+        var lowDirection = "arrow.up"
+        
+        let currentDiff = 0.0
+        let medianDiff = targetMedian - currentPrice
+        let averageDiff = targetMean - currentPrice
+        let highDiff = targetPriceHigh - currentPrice
+        let lowDiff = targetPriceLow - currentPrice
+        differenceArray.insert((String(format: "%.2f", currentDiff)), at: 0)
+        differenceArray.insert((String(format: "%.2f", medianDiff)), at: 1)
+        differenceArray.insert((String(format: "%.2f", averageDiff)), at: 2)
+        differenceArray.insert((String(format: "%.2f", highDiff)), at: 3)
+        differenceArray.insert((String(format: "%.2f", lowDiff)), at: 4)
+        print(differenceArray)
+        
+        //find direction
+        
+        if currentDiff > 0 {
+           currentDirection = "arrow.up"
+        }
+        else if currentDiff < 0 {
+            currentDirection = "arrow.down"
+        } else {
+            currentDirection = "arrow.left.and.right"
+        }
+        
+        if medianDiff > 0 {
+             medianDirection = "arrow.up"
+        }
+        else if medianDiff < 0 {
+            medianDirection = "arrow.down"
+        } else {
+            medianDirection = "arrow.left.and.right"
+        }
+        
+        if averageDiff > 0 {
+            averageDirection = "arrow.up"
+        }
+        else if averageDiff < 0 {
+             averageDirection = "arrow.down"
+        } else {
+             averageDirection = "arrow.left.and.right"
+        }
+        
+        if highDiff > 0 {
+            highDirection = "arrow.up"
+        }
+        else if highDiff < 0 {
+             highDirection = "arrow.down"
+        } else {
+             highDirection = "arrow.left.and.right"
+        }
+        
+        if lowDiff > 0 {
+             lowDirection = "arrow.up"
+        }
+        else if lowDiff < 0 {
+             lowDirection = "arrow.down"
+        } else {
+            lowDirection = "arrow.left.and.right"
+        }
+        
+        directionArray.insert(currentDirection, at: 0)
+        directionArray.insert(medianDirection, at: 1)
+        directionArray.insert(averageDirection, at: 2)
+        directionArray.insert(highDirection, at: 3)
+        directionArray.insert(lowDirection, at: 4)
+        print(directionArray)
+        print(medianDiff)
     }
+    
+
     
     func updateChart() {
         let chartDataSet = BarChartDataSet(entries: numberofRecommendations, label: nil)
@@ -139,13 +215,13 @@ class EstimatesViewController: SearchViewController {
         recommendationBarChart.data = chartData
         recommendationBarChart.xAxis.drawGridLinesEnabled = false
         recommendationBarChart.xAxis.drawAxisLineEnabled = false
-    
         let xAxis = ["", "Strong Buy", "Buy", "Hold", "Sell", "Strong Sell"]
         recommendationBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxis)
         recommendationBarChart.xAxis.granularity = 1
     }
 
 }
+
 
 extension EstimatesViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -158,6 +234,19 @@ extension EstimatesViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.column1Label.text = column1LabelsArray[indexPath.row]
         cell.column2Label.text = "$\(String(estimatedNumbersArray[indexPath.row]))"
+        
+        //Hides current price's difference label
+        if indexPath.row != 0{
+        cell.differenceLabel.text = String(differenceArray[indexPath.row])
+        cell.differenceLabel.adjustsFontSizeToFitWidth = true
+            cell.directionImage.image = UIImage(systemName: directionArray[indexPath.row])
+        } else {
+            cell.differenceLabel.isHidden = true
+            cell.directionImage.isHidden = true
+            
+        }
+        
+        
         return cell
     }
 }

@@ -190,7 +190,6 @@ class SearchViewController: UIViewController {
             }
             do {
                 let relatedCompanies = try JSONDecoder().decode([String].self, from: data!)
-                print(relatedCompanies)
 //                if relatedCompanies.count < 4 {
                 self.relatedCompany1 = relatedCompanies[0]
                 self.relatedCompany2 = relatedCompanies[1]

@@ -10,10 +10,12 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
-   
+    @IBOutlet weak var sourceTextView: UITextView!
+    
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var articleImageView: UIImageView!
     
+    @IBOutlet weak var dateTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

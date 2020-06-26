@@ -15,10 +15,11 @@ class CompanyNewsViewController: SearchViewController {
     var headLinesArray : [String] = []
     var imageLinkArray: [String] = []
     var imagesArray : [Data] = []
-    var dateArray : [Int] = []
+    var dateArray : [String] = []
     var companyTicker1 : String = ""
     var companyLogo : UIImage!
     var urlArray = [String]()
+    var sourceArray = [String]()
     
     //date initializers
     let calendar = Calendar.current
@@ -53,7 +54,9 @@ class CompanyNewsViewController: SearchViewController {
                 self.newsFeed = parsedNewsFeed
                 self.newsFeed.forEach { (article) in
                     self.headLinesArray.append(article.headline)
-                    self.dateArray.append(article.datetime)
+                    let date = NSDate(timeIntervalSince1970: Double(article.datetime))
+                    //figure out what to do with date, currently can't find a way to put in array
+                    self.sourceArray.append(article.source)
                     self.imageLinkArray.append(article.image)
                     self.urlArray.append(article.url)
                 }
@@ -67,6 +70,7 @@ class CompanyNewsViewController: SearchViewController {
             }
         }.resume()
     }
+    
     
     func formatDate() {
         let date = Date()
@@ -83,10 +87,6 @@ class CompanyNewsViewController: SearchViewController {
         let pastYear = calendar.component(.year, from: pastDate)
         let reformattedPastMonth = String(format: "%02d", pastMonth)
         let reformmatedPastDay = String(format: "%02d", pastDay)
-        print(reformattedMonth)
-        print(reformmatedDay)
-        print(reformattedPastMonth)
-        print(reformmatedPastDay)
         fetchCompanyNews(completion: { (res) in
         }, currentMonth: reformattedMonth, currentDay: reformmatedDay, currentYear: currentYear, pastMonth: reformattedPastMonth, pastDay: reformmatedPastDay, pastYear: pastYear)
        
@@ -105,18 +105,22 @@ extension CompanyNewsViewController : UITableViewDataSource, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! NewsTableViewCell
-        cell.textView.text = headLinesArray[indexPath.row]
-        cell.articleImageView.image = companyLogo
-        
         //save textView font and style
         let font = cell.textView.font
-        let textColor = cell.textView.textColor
+        let alignment = cell.textView.textAlignment
+        cell.sourceTextView.text = sourceArray[indexPath.row]
+        cell.textView.text = headLinesArray[indexPath.row]
+  //      cell.dateTextView.text = String(dateArray[indexPath.row])
+        cell.articleImageView.image = companyLogo
+        
         
         //create hyperlink
         let attributedString = NSAttributedString.makeHyperLink(for: urlArray[indexPath.row], in: cell.textView.text, as: cell.textView.text)
         cell.textView.attributedText = attributedString
         cell.textView.font = font
-        cell.textView.textColor = UIColor.white
+        cell.textView.textColor = UIColor.red
+        cell.textView.textAlignment = alignment
+        cell.textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         return cell
     }
     

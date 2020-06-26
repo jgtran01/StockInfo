@@ -13,6 +13,11 @@ class EstimatesTableViewCell: UITableViewCell {
     @IBOutlet weak var column1Label: UILabel!
     
     @IBOutlet weak var column2Label: UILabel!
+    
+    
+    @IBOutlet weak var directionImage: UIImageView!
+    @IBOutlet weak var differenceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
