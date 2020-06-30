@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var tickerTextField: UITextField!
     
@@ -33,8 +33,8 @@ class SearchViewController: UIViewController {
     var medianTargetPrice : Double = 0.0
     var previousClosePrice : Double = 0.0
     var roundedPercentChange : Double = 0.0
-
-
+    
+    
     //Related Companies Button
     var relatedCompany1 : String = ""
     var relatedCompany2 : String = ""
@@ -42,19 +42,19 @@ class SearchViewController: UIViewController {
     var relatedCompany4 : String = ""
     
     var darkGray = UIColor.init(displayP3Red: 99/255, green: 99/255, blue: 102/255, alpha: 1)
- 
+    
     override func viewWillLayoutSubviews() {
-      super.viewWillLayoutSubviews()
-      searchButton.layer.cornerRadius = searchButton.frame.height / 2.0
+        super.viewWillLayoutSubviews()
+        searchButton.layer.cornerRadius = searchButton.frame.height / 2.0
         searchButton.frame = CGRect(x: 160, y: 160, width: 160, height: 160)
-          searchButton.layer.borderWidth = 1.0
-          searchButton.clipsToBounds = true
+        searchButton.layer.borderWidth = 1.0
+        searchButton.clipsToBounds = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func searchButton(_ sender: Any)  {
         
         if tickerTextField.text == "" {
@@ -62,8 +62,8 @@ class SearchViewController: UIViewController {
         } else {
             fetchData(ticker: tickerTextField.text!.uppercased())
         }
-        }
- 
+    }
+    
     func fetchData(ticker: String) {
         
         fetchCompanyProfileInformation(completion: { (res) in
@@ -72,18 +72,18 @@ class SearchViewController: UIViewController {
         }, tickerToUse: ticker)
         fetchCompanyTargetInformation(completion: { (res) in
         }, tickerToUse: ticker)
-//        fetchCompanyFinancials { (res) in
-//        }
+        //        fetchCompanyFinancials { (res) in
+        //        }
     }
-
-
     
     
     
-//MARK: - Fetch JSON Functions
+    
+    
+    //MARK: - Fetch JSON Functions
     func fetchCompanyProfileInformation(completion: @escaping (Result<CompanyProfileModel, Error>) -> (), tickerToUse: String) {
         
-//        let ticker = tickerTextField.text!.uppercased()
+        //        let ticker = tickerTextField.text!.uppercased()
         
         // Fetches Company Profile Information
         let urlString = "https://finnhub.io/api/v1/stock/profile2?symbol=\(tickerToUse)&token=\(apiKey)"
@@ -109,14 +109,14 @@ class SearchViewController: UIViewController {
                 self.weburl = companyInfo.weburl
                 self.logoLink = companyInfo.logo
             } catch let jsonError{
-               completion(.failure(jsonError))
-            print("failed to fetch JSON", jsonError)
+                completion(.failure(jsonError))
+                print("failed to fetch JSON", jsonError)
             }
         }.resume()
     }
     
     func fetchCompanyStockInformation(completion: @escaping (Result<CompanyStockPrice, Error>) -> (), tickerToUse : String) {
-//        let ticker = tickerTextField.text!.uppercased()
+        //        let ticker = tickerTextField.text!.uppercased()
         
         //Fetches Company Stock Information
         let urlString = "https://finnhub.io/api/v1/quote?symbol=\(tickerToUse)&token=\(apiKey)"
@@ -144,7 +144,7 @@ class SearchViewController: UIViewController {
         }.resume()
         
     }
-
+    
     func fetchCompanyTargetInformation(completion: @escaping (Result<CompanyTarget, Error>) -> (), tickerToUse : String) {
         
         
@@ -177,7 +177,7 @@ class SearchViewController: UIViewController {
     }
     
     func fetchRelatedCompanies(completion: @escaping (Result<RelatedCompanies, Error>) -> (), tickerToUse : String) {
-            
+        
         
         //Fetches Company Stock Information
         let urlString = "https://finnhub.io/api/v1/stock/peers?symbol=\(tickerToUse)&token=\(apiKey)"
@@ -190,39 +190,42 @@ class SearchViewController: UIViewController {
             }
             do {
                 let relatedCompanies = try JSONDecoder().decode([String].self, from: data!)
-//                if relatedCompanies.count < 4 {
-                self.relatedCompany1 = relatedCompanies[0]
-                self.relatedCompany2 = relatedCompanies[1]
-                self.relatedCompany3 = relatedCompanies[2]
-                self.relatedCompany4 = relatedCompanies[3]
-//                }
-//                if relatedCompanies.count == 3{
-//                    self.relatedCompany1 = relatedCompanies[0]
-//                    self.relatedCompany2 = relatedCompanies[1]
-//                    self.relatedCompany3 = relatedCompanies[2]
-//                    self.relatedCompany4 = ""
-//                }
-//                if relatedCompanies.count == 2 {
-//                    self.relatedCompany1 = relatedCompanies[0]
-//                    self.relatedCompany2 = relatedCompanies[1]
-//                    self.relatedCompany3 = ""
-//                    self.relatedCompany4 = ""
-//                }
-//                if relatedCompanies.count == 1{
-//                    self.relatedCompany1 = relatedCompanies[0]
-//                    self.relatedCompany2 = ""
-//                    self.relatedCompany3 = ""
-//                    self.relatedCompany4 = ""
-//                } else  {
-//                    self.relatedCompany1 = ""
-//                    self.relatedCompany2 = ""
-//                    self.relatedCompany3 = ""
-//                    self.relatedCompany4 = ""
-//                }
+                print(relatedCompanies.count)
+                print(relatedCompanies)
+                
+                if relatedCompanies.count > 4 {
+                    self.relatedCompany1 = relatedCompanies[0]
+                    self.relatedCompany2 = relatedCompanies[1]
+                    self.relatedCompany3 = relatedCompanies[2]
+                    self.relatedCompany4 = relatedCompanies[3]
+                }
+                else if relatedCompanies.count == 3{
+                    self.relatedCompany1 = relatedCompanies[0]
+                    self.relatedCompany2 = relatedCompanies[1]
+                    self.relatedCompany3 = relatedCompanies[2]
+                    self.relatedCompany4 = ""
+                }
+                else if relatedCompanies.count == 2 {
+                    self.relatedCompany1 = relatedCompanies[0]
+                    self.relatedCompany2 = relatedCompanies[1]
+                    self.relatedCompany3 = ""
+                    self.relatedCompany4 = ""
+                }
+                else if relatedCompanies.count == 1{
+                    self.relatedCompany1 = relatedCompanies[0]
+                    self.relatedCompany2 = ""
+                    self.relatedCompany3 = ""
+                    self.relatedCompany4 = ""
+                } else  {
+                    self.relatedCompany1 = ""
+                    self.relatedCompany2 = ""
+                    self.relatedCompany3 = ""
+                    self.relatedCompany4 = ""
+                }
                 
                 DispatchQueue.main.async {
-                             self.performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
-                 }
+                    self.performSegue(withIdentifier: "goToCompanyDataVC", sender: self)
+                }
             } catch let jsonError {
                 completion(.failure(jsonError))
                 print("failed to fetch JSON", jsonError)
@@ -231,32 +234,32 @@ class SearchViewController: UIViewController {
         }.resume()
     }
     
-//    func fetchCompanyFinancials(completion: @escaping (Result<CompanyFinancials, Error>) -> ()) {
-//        
-//        let ticker = tickerTextField.text!.uppercased()
-//        
-//        //Fetches Company Stock Information
-//        let urlString = "https://finnhub.io/api/v1/stock/metric?symbol=\(ticker)&metric=all&token=\(apiKey)"
-//        guard let url = URL(string: urlString) else {return}
-//        
-//        URLSession.shared.dataTask(with: url) { (data, resp, err) in
-//            if let err = err {
-//                completion(.failure(err))
-//                print("failed to connect to web server for API")
-//            }
-//            do {
-//                let companyFinancials = try JSONDecoder().decode(CompanyFinancials.self, from: data!)
-//            } catch let jsonError {
-//                completion(.failure(jsonError))
-//                print("failed to fetch JSON for Company Financials", jsonError)
-//            }
-//            
-//        }.resume()
-//    }
-//    
+    //    func fetchCompanyFinancials(completion: @escaping (Result<CompanyFinancials, Error>) -> ()) {
+    //
+    //        let ticker = tickerTextField.text!.uppercased()
+    //
+    //        //Fetches Company Stock Information
+    //        let urlString = "https://finnhub.io/api/v1/stock/metric?symbol=\(ticker)&metric=all&token=\(apiKey)"
+    //        guard let url = URL(string: urlString) else {return}
+    //
+    //        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+    //            if let err = err {
+    //                completion(.failure(err))
+    //                print("failed to connect to web server for API")
+    //            }
+    //            do {
+    //                let companyFinancials = try JSONDecoder().decode(CompanyFinancials.self, from: data!)
+    //            } catch let jsonError {
+    //                completion(.failure(jsonError))
+    //                print("failed to fetch JSON for Company Financials", jsonError)
+    //            }
+    //
+    //        }.resume()
+    //    }
+    //
     
     
-//MARK: - Prepare For Segue
+    //MARK: - Prepare For Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCompanyDataVC" {
             let destinationVC = segue.destination as! CompanyDataViewController
@@ -277,6 +280,6 @@ class SearchViewController: UIViewController {
             destinationVC.companyPeer4 = relatedCompany4
         }
     }
-
-        
+    
+    
 }

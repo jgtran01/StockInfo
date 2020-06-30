@@ -35,6 +35,7 @@ class EstimatesViewController: SearchViewController {
     var estimatedNumbersArray : [String] = ["","","","",""]
     var differenceArray : [String] = ["","","","",""]
     var directionArray: [String] = ["","","","",""]
+    var directionColorArray: [UIColor] = [UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear]
     
     //colors
     
@@ -134,6 +135,11 @@ class EstimatesViewController: SearchViewController {
         var averageDirection = "arrow.up"
         var highDirection = "arrow.up"
         var lowDirection = "arrow.up"
+        var currentDirectionColor = UIColor.clear
+        var medianDirectionColor = UIColor.clear
+        var averageDirectionColor = UIColor.clear
+        var highDirectionColor = UIColor.clear
+        var lowDirectionColor = UIColor.clear
         
         let currentDiff = 0.0
         let medianDiff = targetMedian - currentPrice
@@ -151,56 +157,74 @@ class EstimatesViewController: SearchViewController {
         
         if currentDiff > 0 {
            currentDirection = "arrow.up"
+            currentDirectionColor = UIColor.green
         }
         else if currentDiff < 0 {
             currentDirection = "arrow.down"
+            currentDirectionColor = UIColor.red
         } else {
             currentDirection = "arrow.left.and.right"
+            currentDirectionColor = UIColor.gray
         }
         
         if medianDiff > 0 {
              medianDirection = "arrow.up"
+            medianDirectionColor = UIColor.green
         }
         else if medianDiff < 0 {
             medianDirection = "arrow.down"
+            medianDirectionColor = UIColor.red
         } else {
             medianDirection = "arrow.left.and.right"
+            medianDirectionColor = UIColor.gray
         }
         
         if averageDiff > 0 {
             averageDirection = "arrow.up"
+            averageDirectionColor = UIColor.green
         }
         else if averageDiff < 0 {
              averageDirection = "arrow.down"
+            averageDirectionColor = UIColor.red
         } else {
              averageDirection = "arrow.left.and.right"
+            averageDirectionColor = UIColor.gray
         }
         
         if highDiff > 0 {
             highDirection = "arrow.up"
+            highDirectionColor = UIColor.green
         }
         else if highDiff < 0 {
              highDirection = "arrow.down"
+            highDirectionColor = UIColor.red
         } else {
              highDirection = "arrow.left.and.right"
+            highDirectionColor = UIColor.gray
         }
         
         if lowDiff > 0 {
              lowDirection = "arrow.up"
+            lowDirectionColor = UIColor.green
         }
         else if lowDiff < 0 {
              lowDirection = "arrow.down"
+            lowDirectionColor = UIColor.red
         } else {
             lowDirection = "arrow.left.and.right"
+            lowDirectionColor = UIColor.gray
         }
         
         directionArray.insert(currentDirection, at: 0)
+        directionColorArray.insert(currentDirectionColor, at: 0)
         directionArray.insert(medianDirection, at: 1)
+        directionColorArray.insert(medianDirectionColor, at: 1)
         directionArray.insert(averageDirection, at: 2)
+        directionColorArray.insert(averageDirectionColor, at: 2)
         directionArray.insert(highDirection, at: 3)
+        directionColorArray.insert(highDirectionColor, at: 3)
         directionArray.insert(lowDirection, at: 4)
-        print(directionArray)
-        print(medianDiff)
+        directionColorArray.insert(lowDirectionColor, at: 4)
     }
     
 
@@ -240,6 +264,7 @@ extension EstimatesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.differenceLabel.text = String(differenceArray[indexPath.row])
         cell.differenceLabel.adjustsFontSizeToFitWidth = true
             cell.directionImage.image = UIImage(systemName: directionArray[indexPath.row])
+            cell.directionImage.tintColor = directionColorArray[indexPath.row]
         } else {
             cell.differenceLabel.isHidden = true
             cell.directionImage.isHidden = true

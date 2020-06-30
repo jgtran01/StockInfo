@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class CompanyDataViewController : UIViewController {
     
@@ -21,7 +22,7 @@ class CompanyDataViewController : UIViewController {
     @IBOutlet weak var companyFinancialsButton: UIButton!
     @IBOutlet weak var companyPeersLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var medianPriceTargetLabel: UILabel!
+//    @IBOutlet weak var medianPriceTargetLabel: UILabel!
     @IBOutlet weak var relatedCompany1Button: UIButton!
     @IBOutlet weak var relatedCompany2Button: UIButton!
     @IBOutlet weak var relatedCompany3Button: UIButton!
@@ -96,56 +97,49 @@ class CompanyDataViewController : UIViewController {
     
     func updateUILayout() {
         
-        companyNameLabel.layer.borderWidth = 1.0
-        companyNameLabel.layer.borderColor = greenBorderLine
         
-        companyTickerLabel.layer.borderWidth = 10.0
-        companyTickerLabel.layer.borderColor = greenBorderLine
+        companyNewsButton.layer.borderWidth = 5.0
+        companyNewsButton.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
+
         
-        logoImageView.layer.borderWidth = 1.0
-        logoImageView.layer.backgroundColor = greenBorderLine
-        logoImageView.layer.borderColor = greenBorderLine
+        companyPriceButton.layer.borderWidth = 5.0
+        companyPriceButton.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
         
-        companyPriceButton.layer.borderWidth = 10.0
-        companyPriceButton.layer.borderColor = greenBorderLine
         
-        companyNewsButton.layer.borderWidth = 10.0
-        companyNewsButton.layer.borderColor = greenBorderLine
+        companyTargetsButton.layer.borderWidth = 5.0
+        companyTargetsButton.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
         
-        medianPriceTargetLabel.layer.borderWidth = 10.0
-        medianPriceTargetLabel.layer.borderColor = greenBorderLine
-        companyTargetsButton.layer.borderWidth = 10.0
-        companyTargetsButton.layer.borderColor = greenBorderLine
         
-        companyFinancialsButton.layer.borderWidth = 10.0
-        companyFinancialsButton.layer.borderColor = greenBorderLine
+        companyPeersLabel.layer.borderWidth = 5
+        companyPeersLabel.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
         
-        companyPeersLabel.layer.borderWidth = 10.0
-        companyPeersLabel.layer.borderColor = greenBorderLine
-        relatedCompany1Button.layer.borderWidth = 10.0
-        relatedCompany1Button.layer.borderColor = greenBorderLine
-        relatedCompany2Button.layer.borderWidth = 10.0
-        relatedCompany2Button.layer.borderColor = greenBorderLine
+        companyFinancialsButton.layer.borderWidth = 5
+        companyFinancialsButton.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
         
-        relatedCompany3Button.layer.borderWidth = 10.0
-        relatedCompany3Button.layer.borderColor = greenBorderLine
-        relatedCompany4Button.layer.borderWidth = 10.0
-        relatedCompany4Button.layer.borderColor = greenBorderLine
+        relatedCompany1Button.layer.borderWidth = 5
+        relatedCompany1Button.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
+        relatedCompany2Button.layer.borderWidth = 5
+        relatedCompany2Button.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
         
-        indicesButton.layer.borderWidth = 10.0
-        indicesButton.layer.borderColor = greenBorderLine
+        relatedCompany3Button.layer.borderWidth = 5
+        relatedCompany3Button.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
+        relatedCompany4Button.layer.borderWidth = 5
+        relatedCompany4Button.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
+        
+        indicesButton.layer.borderWidth = 5.0
+        indicesButton.layer.borderColor = #colorLiteral(red: 0.2766755619, green: 0.8209470178, blue: 0.6074805909, alpha: 1)
     }
     
     func updateUIText() {
         let stockPriceAsString = String(format: "%.2f", companyCurrentStockPrice)
         companyNameLabel.text = companyName
         companyTickerLabel.text = companyTicker
-        companyTargetsButton.setTitle("$\(String(format: "%.2f", companyMedianTargetPrice))", for: .normal)
+        companyTargetsButton.setTitle("Median Price Target: \n$\(String(format: "%.2f", companyMedianTargetPrice))", for: .normal)
         fetchLogo(imageLink: companyLogoLink)
         
         if percentChange > 0 {
             companyPriceButton.setTitle("$\(stockPriceAsString)\n+\(percentChange)%", for: .normal)
-            companyPriceButton.setTitleColor(UIColor.green, for: .normal)
+            companyPriceButton.setTitleColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
             
         } else {
             companyPriceButton.setTitle("$\(stockPriceAsString)\n\(percentChange)%", for: .normal)
